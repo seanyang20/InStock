@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        {/* <Header/> */}
         <Switch>
           <Route path="/warehouses" component={Warehouses} />
           <Route
@@ -17,6 +18,7 @@ function App() {
           />
           <Route path="/inventory" component={Inventory} />
         </Switch>
+        {/* <Footer/> */}
       </Router>
     </div>
   );
