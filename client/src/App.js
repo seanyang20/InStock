@@ -1,7 +1,7 @@
 import "./App.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Warehouses from "../pages/Warehouses/Warehouses";
-import Inventory from "../pages/Inventory/Inventory";
+import Warehouses from "./pages/Warehouses/Warehouses";
+import Inventory from "./pages/Inventory/Inventory";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
               return <Warehouses {...props} />;
             }}
           />
-          <Route path="/inventory" component={Inventory} />
+          <Route path="/inventories" component={Inventory} />
         </Switch>
         {/* <Footer/> */}
       </Router>
