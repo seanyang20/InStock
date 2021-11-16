@@ -1,4 +1,5 @@
 import "./WarehouseDetails.scss";
+import ItemCard from "../ItemCard/ItemCard";
 
 export default function WarehouseDetails() {
   return (
@@ -11,6 +12,9 @@ export default function WarehouseDetails() {
         <div className="warehouse-details__head--edit">
           <img className="warehouse-details__head--edit-icon" alt="edit icon" />
         </div>
+      </article>
+      <article>
+        <ItemCard />
       </article>
     </section>
   );
