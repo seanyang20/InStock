@@ -1,0 +1,26 @@
+@use "./typography" as *;
+
+//primary colors
+$instock-black: #13182c;
+$instock-indigo: #2e66e5;
+$white: #ffffff;
+
+//secondary colors
+$slate: #5c667e;
+$cloud: #bdc5d5;
+
+//background colors
+$background-dark: #232940;
+$background-light: #f7f8f9;
+
+//supporting colors
+$in-stock: #158463;
+$out-of-stock: #c94515;
+
+//fonts
+$font-regular: titillium-web-regular;
+$font-semi: titillium-web-semi-bold;
+
+//breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
