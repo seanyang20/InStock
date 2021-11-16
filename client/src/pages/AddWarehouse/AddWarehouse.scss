@@ -8,8 +8,14 @@
 .add-warehouse {
   margin: 0 1rem;
   background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 2px;
   @include mQ($breakpoint-tablet) {
     margin: 0 2rem;
+  }
+  @include mQ($breakpoint-desktop) {
+    max-width: 63.75rem;
+    margin: 0 auto;
   }
 
   &__header {
