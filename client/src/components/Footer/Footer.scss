@@ -1,0 +1,10 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.footer {
+  background-color: $background-light;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
