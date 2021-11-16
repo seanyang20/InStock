@@ -3,23 +3,24 @@ const router = express.Router();
 const fs = require("fs");
 
 // Read Data from JSON
-let warehouseData = [];
+let warehousesData = [];
 
 const getWarehouseData = () => {
-  fs.readFile("insert file path", (err, data) => {
+  fs.readFile('./data/warehouses.json', (err, data) => {
     if (err) {
       console.log(err);
       return;
     }
-    warehouseData = JSON.parse(data);
+    warehousesData = JSON.parse(data);
   });
 };
-// Return data from JSON
+
+// Read data from JSON
 getWarehouseData();
 
 // Router.get
-router.get("/", (req, res) => {
-  res.json(inventoriesData);
+router.get("/", (_req, res) => {
+  res.json(warehousesData);
 });
 
 // Router.post
@@ -29,5 +30,4 @@ router.post("/", (req, res) => {
   }
 });
 
-// module.exports = router;
 module.exports = router;

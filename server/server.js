@@ -1,22 +1,23 @@
 const express = require("express");
-
-const path = require("path");
+const app = express();
 const warehousesRoute = require("./routes/warehouses");
-const inventoriesRoute = require("./routes/inventories");
+// const inventoriesRoute = require("./routes/inventories");
 const cors = require("cors");
+const path = require("path");
+
+require('dotenv').config();
 const { PORT, BACKEND_URL } = process.env;
 
 // init the express app in order to use express methods
-const app = express();
+
 
 app.use(cors());
-
 app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/warehouses", warehousesRoute);
-app.use("/inventories", inventoriesRoute);
+// app.use("/inventories", inventoriesRoute);
 
-app.listen(8080, () => {
-  console.log(`Port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}...`);
 });

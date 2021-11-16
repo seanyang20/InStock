@@ -9,7 +9,7 @@ function App() {
       <Router>
         {/* <Header/> */}
         <Switch>
-          <Route path="/warehouses" component={Warehouses} />
+          <Route path="/" component={Warehouses} />
           <Route
             path="/warehouses/:id"
             render={(props) => {

@@ -1,0 +1,70 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/variables" as *;
+
+.header {
+  width: 100vw;
+  height: 20vh;
+  background-color: $instock-black;
+}
+
+.warehouses {
+  width: 100vw;
+  height: 100vh;
+  background-color: $background-light;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    margin: 0rem 1rem;
+    border-radius: 0.25rem;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    align-self: flex-start;
+    font-family: "Titillium Web Semi Bold";
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    margin: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  &__search {
+    font-family: "Titillium Web Regular";
+    font-size: 0.8125rem;
+    height: 2rem;
+    border: 1px solid $cloud;
+    border-radius: 1.25rem;
+    padding: 1rem;
+    background: url("../../assets/icons/search-24px.svg") 95% no-repeat;
+    margin: 0rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    font-family: "Titillium Web Semi Bold";
+    font-size: 0.8125rem;
+    color: white;
+    background-color: $instock-indigo;
+    border: none;
+    height: 2rem;
+    border-radius: 1.25rem;
+    margin: 0rem 1.5rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-dark;
+      transition: 1s;
+    }
+  }
+}
