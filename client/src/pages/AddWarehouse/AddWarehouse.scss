@@ -8,38 +8,74 @@
 .add-warehouse {
   margin: 0 1rem;
   background-color: white;
+  @include mQ($breakpoint-tablet) {
+    margin: 0 2rem;
+  }
 
   &__header {
     display: flex;
     justify-content: center;
     padding: 1.5rem 0;
+    @include mQ($breakpoint-tablet) {
+      justify-content: flex-start;
+      padding-left: 1rem;
+    }
   }
 
   &__title {
     font-size: 1.6rem;
     line-height: 2.25rem;
     padding-left: 0.25rem;
+    @include mQ($breakpoint-tablet) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   &__form {
     text-align: left;
+    @include mQ($breakpoint-tablet) {
+      border-top: 1px solid $cloud;
+    }
   }
-
+  &__flex-container {
+    @include mQ($breakpoint-tablet) {
+      display: flex;
+    }
+  }
   &__form-section {
     border-top: 1px solid $cloud;
     padding: 1rem;
+    @include mQ($breakpoint-tablet) {
+      margin: 1.5rem 0;
+      padding: 1rem 2rem;
+      border-top: none;
+    }
+    &:last-of-type {
+      @include mQ($breakpoint-tablet) {
+        border-left: 1px solid $cloud;
+      }
+    }
   }
 
   &__section-title {
     font-size: 1.25rem;
     line-height: 1.75rem;
     padding: 0.5rem 0;
+    @include mQ($breakpoint-tablet) {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
   }
 
   &__input-label {
     font-size: 0.813rem;
     line-height: 1.25rem;
     margin-bottom: 0.5rem;
+    @include mQ($breakpoint-tablet) {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
   }
 
   &__input {
@@ -53,6 +89,9 @@
     background-color: $background-light;
     display: flex;
     padding: 1rem;
+    @include mQ($breakpoint-tablet) {
+      justify-content: flex-end;
+    }
   }
   &__cancel-button {
     width: 50%;
@@ -67,6 +106,7 @@
     margin-right: 0.5rem;
     @include mQ($breakpoint-tablet) {
       height: 38px;
+      width: auto;
     }
     &:hover {
       color: $instock-indigo;
@@ -87,6 +127,7 @@
     margin-left: 0.5rem;
     @include mQ($breakpoint-tablet) {
       height: 38px;
+      width: auto;
     }
     &:hover {
       background-color: $background-dark;
