@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static("public"));
         
 app.use("/warehouses", warehousesRoute);
-app.use("/inventories", inventoriesRoute);
+app.use("/", inventoriesRoute);
 
 app.listen(port, () => {
   console.log(`Port ${port}`);

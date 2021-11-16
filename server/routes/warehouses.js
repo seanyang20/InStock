@@ -6,7 +6,7 @@ const fs = require("fs");
 let warehouseData = [];
 
 const getWarehouseData = () => {
-  fs.readFile("./data/inventories.json", (err, data) => {
+  fs.readFile("./data/warehouses.json", (err, data) => {
     if (err) {
       console.log(err);
       return;
@@ -17,12 +17,28 @@ const getWarehouseData = () => {
 // Return data from JSON
 getWarehouseData();
 
-// Router.get
-router.get("/:warehouseId/inventories", (req, res) => {
-  console.log("Inside Router /GET for getting inventories for given warehouse");
+// Router.get for all warehouses
+router.get("/", (req, res) => {
+  console.log("Inside Router Get for all warehouses");
 
-  // res.json(inventoriesData);
+  res.json(warehouseData);
 });
+
+// Router.get for getting a single warehouse 
+router.get("/:warehouseId", (req, res) => {
+  console.log("Inside Router Get for a specific warehouse");
+
+  const singleWarehouse = warehouseData.find((warehouse) => {
+    return warehouse.id === req.params.warehouseId;
+})
+// console.log(singleWarehouse);
+if (singleWarehouse) {
+    res.json(singleWarehouse);
+} else {
+    res.status(404).send("We can't find that warehouse.");
+}
+});
+
 
 // Router.post
 router.post("/", (req, res) => {
