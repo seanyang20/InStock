@@ -1,5 +1,5 @@
 import "./App.scss";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Router>
         {/* <Header/> */}
-        <Routes>
+        <Switch>
           <Route path="/" component={Warehouses} />
           <Route
             path="/warehouses/:id"
@@ -17,7 +17,7 @@ function App() {
             }}
           />
           <Route path="/inventories" component={Inventory} />
-        </Routes>
+        </Switch>
         {/* <Footer/> */}
       </Router>
     </div>
