@@ -2,6 +2,34 @@
 @use "../../styles/mixins/" as *;
 @use "../../styles/variables" as *;
 
-h1 {
-  font-family: $font-regular;
+.temp-background {
+  background-color: $background-dark;
+}
+.add-warehouse {
+  margin: 0 1rem;
+  background-color: white;
+  &__title {
+  }
+
+  &__form {
+  }
+
+  &__form-section {
+  }
+
+  &__section-title {
+  }
+
+  &__input-label {
+  }
+
+  &__input {
+    @include inputBorder;
+  }
+
+  &__cancel-button {
+  }
+
+  &__add-button {
+  }
 }
