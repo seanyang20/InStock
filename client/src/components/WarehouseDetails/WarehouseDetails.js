@@ -4,13 +4,13 @@ import ItemCard from "../ItemCard/ItemCard";
 export default function WarehouseDetails() {
   return (
     <section className="warehouse-details">
-      <article className="warehouse-details__head">
-        <div className="warehouse-details__head--back">
-          <img className="warehouse-details__head--back-icon" alt="back icon" />
+      <article className="head">
+        <div className="head__back">
+          <img className="head__back--icon" alt="back icon" />
         </div>
-        <h1 className="warehouse-details__head--title">King West</h1>
-        <div className="warehouse-details__head--edit">
-          <img className="warehouse-details__head--edit-icon" alt="edit icon" />
+        <h1 className="head__title">King West</h1>
+        <div className="head__edit">
+          <img className="head__edit--icon" alt="edit icon" />
         </div>
       </article>
       <article>
