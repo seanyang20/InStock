@@ -1,0 +1,8 @@
+@use "./variables" as *;
+
+* {
+  font-family: $font-regular;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
