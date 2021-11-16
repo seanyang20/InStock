@@ -8,37 +8,63 @@
 .add-warehouse {
   margin: 0 1rem;
   background-color: white;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+  }
+
   &__title {
+    font-size: 1.6rem;
+    line-height: 2.25rem;
+    padding-left: 0.25rem;
   }
 
   &__form {
+    text-align: left;
   }
 
   &__form-section {
     border-top: 1px solid $cloud;
+    padding: 1rem;
   }
 
   &__section-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding: 0.5rem 0;
   }
 
   &__input-label {
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   &__input {
     @include inputBorder;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin: 0.5rem 0;
   }
+
   &__buttons {
     background-color: $background-light;
     display: flex;
+    padding: 1rem;
   }
   &__cancel-button {
     width: 50%;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
     height: 36px;
     background-color: $white;
     border-radius: 20px;
     color: $slate;
     border: 1px solid $cloud;
     padding: 0 1rem;
+    margin-right: 0.5rem;
     @include mQ($breakpoint-tablet) {
       height: 38px;
     }
@@ -50,12 +76,15 @@
 
   &__add-button {
     width: 50%;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
     height: 36px;
     background-color: $instock-indigo;
     border-radius: 20px;
     border: none;
     color: white;
     padding: 0 1rem;
+    margin-left: 0.5rem;
     @include mQ($breakpoint-tablet) {
       height: 38px;
     }

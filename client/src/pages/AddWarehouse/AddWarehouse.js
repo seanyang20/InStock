@@ -1,5 +1,6 @@
 import "./AddWarehouse.scss";
 import axios from "axios";
+import arrow from "../../assets/Icons/arrow_back-24px.svg";
 const apiUrl = "http://localhost:8080";
 
 export default function AddWarehouse() {
@@ -32,7 +33,11 @@ export default function AddWarehouse() {
   return (
     <article className="temp-background">
       <section className="add-warehouse">
-        <h1 className="add-warehouse__title">Add New Warehouse</h1>
+        <div className="add-warehouse__header">
+          <img src={arrow} alt="arrow" />
+          <h1 className="add-warehouse__title">Add New Warehouse</h1>
+        </div>
+
         <form onSubmit={handleSubmit} className="add-warehouse__form">
           <section className="add-warehouse__form-section">
             <h2 className="add-warehouse__section-title">Warehouse Details</h2>
@@ -107,7 +112,7 @@ export default function AddWarehouse() {
               type="text"
               name="phoneNumber"
               placeholder="
-      PhoneNumber"
+      Phone Number"
             ></input>
             <label className="add-warehouse__input-label" for="email">
               Email
