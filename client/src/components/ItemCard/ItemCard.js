@@ -6,20 +6,20 @@ export default function ItemCard() {
   return (
     <article className="item-card">
       <div className="item-card__title-cont">
-        <h4 className="item-card__item-title">Inventory Item</h4>
-        <p className="item-card__item">Television</p>
+        <h6 className="item-card__subhead">INVENTORY ITEM</h6>
+        <p className="item-card__value">Television</p>
       </div>
       <div className="item-card__cat-cont">
-        <h4 className="item-card__cat-title">Category</h4>
-        <p className="item-card__cat">Electronics</p>
+        <h6 className="item-card__subhead">CATEGORY</h6>
+        <p className="item-card__value">Electronics</p>
       </div>
       <div className="item-card__stat-cont">
-        <h4 className="item-card__stat-title">STATUS</h4>
-        <p className="item-card__stat">IN STOCK</p>
+        <h6 className="item-card__subhead">STATUS</h6>
+        <p className="item-card__value">IN STOCK</p>
       </div>
       <div className="item-card__qty-cont">
-        <h4 className="item-card__qty-title">QTY</h4>
-        <p className="item-card__qty">500</p>
+        <h6 className="item-card__subhead">QTY</h6>
+        <p className="item-card__value">500</p>
       </div>
       <section className="item-card__chg-cont">
         <div className="item-card__delete-cont">
