@@ -1,0 +1,7 @@
+@use "../../styles/global" as *;
+@use "../../styles/mixins/" as *;
+@use "../../styles/variables" as *;
+
+h1 {
+  font-family: $font-regular;
+}
