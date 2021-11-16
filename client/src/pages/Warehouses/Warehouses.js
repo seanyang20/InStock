@@ -1,4 +1,4 @@
-import AddWarehouse from "../../components/AddWarehouse/AddWarehouse";
+import AddWarehouse from "../AddWarehouse/AddWarehouse";
 export default function Warehouses() {
   return <AddWarehouse />;
 }
