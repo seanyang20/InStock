@@ -1,6 +1,6 @@
-@use "../../styles/global" as *;
-@use "../../styles/mixins/" as *;
-@use "../../styles/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins/" as *;
+@use "../../styles/partials/variables" as *;
 
 .temp-background {
   background-color: $background-dark;
@@ -15,6 +15,7 @@
   }
 
   &__form-section {
+    border-top: 1px solid $cloud;
   }
 
   &__section-title {
@@ -26,10 +27,40 @@
   &__input {
     @include inputBorder;
   }
-
+  &__buttons {
+    background-color: $background-light;
+    display: flex;
+  }
   &__cancel-button {
+    width: 50%;
+    height: 36px;
+    background-color: $white;
+    border-radius: 20px;
+    color: $slate;
+    border: 1px solid $cloud;
+    padding: 0 1rem;
+    @include mQ($breakpoint-tablet) {
+      height: 38px;
+    }
+    &:hover {
+      color: $instock-indigo;
+      border: 1px solid $instock-indigo;
+    }
   }
 
   &__add-button {
+    width: 50%;
+    height: 36px;
+    background-color: $instock-indigo;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 0 1rem;
+    @include mQ($breakpoint-tablet) {
+      height: 38px;
+    }
+    &:hover {
+      background-color: $background-dark;
+    }
   }
 }

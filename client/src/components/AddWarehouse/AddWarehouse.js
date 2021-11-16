@@ -84,8 +84,10 @@ export default function AddWarehouse() {
       Email"
             ></input>
           </section>
+          <section className="add-warehouse__buttons">
           <button className="add-warehouse__cancel-button">Cancel</button>
           <button className="add-warehouse__add-button">+ Add Warehouse</button>
+          </section>
         </form>
       </section>
     </article>
