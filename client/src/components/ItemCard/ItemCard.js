@@ -1,4 +1,6 @@
 import "./ItemCard.scss";
+import editIcon from "../../assets/Icons/edit-24px.svg";
+import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 
 export default function ItemCard() {
   return (
@@ -21,10 +23,18 @@ export default function ItemCard() {
       </div>
       <section className="item-card__chg-cont">
         <div className="item-card__delete-cont">
-          <img className="item-card__delete-cont--icon" alt="delete icon" />
+          <img
+            className="item-card__delete-cont--icon"
+            src={deleteIcon}
+            alt="delete icon"
+          />
         </div>
         <div className="item-card__edit-cont">
-          <img className="item-card__edit-cont--icon" alt="edit icon" />
+          <img
+            className="item-card__edit-cont--icon"
+            src={editIcon}
+            alt="edit icon"
+          />
         </div>
       </section>
     </article>
