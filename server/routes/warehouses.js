@@ -6,7 +6,7 @@ const fs = require("fs");
 let warehouseData = [];
 
 const getWarehouseData = () => {
-  fs.readFile("insert file path", (err, data) => {
+  fs.readFile("./data/inventories.json", (err, data) => {
     if (err) {
       console.log(err);
       return;
@@ -18,8 +18,10 @@ const getWarehouseData = () => {
 getWarehouseData();
 
 // Router.get
-router.get("/", (req, res) => {
-  res.json(inventoriesData);
+router.get("/:warehouseId/inventories", (req, res) => {
+  console.log("Inside Router /GET for getting inventories for given warehouse");
+
+  // res.json(inventoriesData);
 });
 
 // Router.post
