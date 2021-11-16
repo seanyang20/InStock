@@ -17,20 +17,25 @@ const getInventoryData = () => {
 // Return data from JSON
 getInventoryData();
 
+router.get("/inventories", (req, res) => {
+  console.log("Inside Router /Get for all inventory");
+  res.json(inventoryData);
+});
+
 router.get("/warehouses/:warehouseId/inventories", (req, res) => {
-    console.log("Inside Router /GET for getting inventories for given warehouse");
+  console.log("Inside Router /GET for getting inventories for given warehouse");
 
-    const warehouseId = req.params.warehouseId;
-    console.log(warehouseId);
+  const warehouseId = req.params.warehouseId;
+  console.log(warehouseId);
 
-    const warehouseInv = inventoryData.filter(
-        (inventory) => 
-        // console.log(inventory, "TESTING")
-        inventory.warehouseID === warehouseId
-        )
-    console.log(warehouseInv);
-    // res.json(inventoriesData);
-  });
+  const warehouseInv = inventoryData.filter(
+    (inventory) =>
+      // console.log(inventory, "TESTING")
+      inventory.warehouseID === warehouseId
+  );
+  console.log(warehouseInv);
+  // res.json(inventoriesData);
+});
 
 // module.exports = router;
 module.exports = router;
