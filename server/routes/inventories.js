@@ -38,6 +38,7 @@ if (singleInventory) {
 
 });
 
+
 router.put("/inventories/:inventoryId", (req, res) => {
   console.log("Inside ROUTER PUT to edit an inventory item");
   const inventoryId = req.params.inventoryId
