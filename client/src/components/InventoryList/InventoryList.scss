@@ -5,13 +5,16 @@
 .inventory-list {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 100%;
+  margin: 0 1rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
 
   &__head {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 1rem;
+    margin: 2rem 1.5rem 1.5rem 1.5rem;
 
     &--title {
       font-size: 1.75rem;
@@ -19,9 +22,36 @@
       font-weight: 600;
       color: $instock-black;
       text-align: left;
+      margin-bottom: 1rem;
     }
   }
 
   &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+
+    &--input {
+      max-width: 100%;
+      min-width: 100%;
+      margin: 0.5rem;
+      height: 2.25rem;
+      border: 1px solid $cloud;
+      border-radius: 1.25rem;
+    }
+
+    &--button {
+      max-width: 100%;
+      min-width: 100%;
+      margin: 0.5rem;
+      height: 2.25rem;
+      padding: 0.5rem 5.5rem;
+      background-color: $instock-indigo;
+      color: $background-light;
+      border: none;
+      border-radius: 1.25rem;
+      font-size: 0.8125rem;
+    }
   }
 }
