@@ -7,11 +7,24 @@
   height: 136px;
   padding: 1.875rem 1rem 0;
 
+  @include mQ($breakpoint-tablet) {
+    height: 92px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem 0;
+  }
+
   &__logo {
     height: 28px;
   }
+
   &__buttons-container {
     margin-top: 1rem;
+    @include mQ($breakpoint-tablet) {
+      width: 214px;
+      margin: 0;
+    }
   }
 
   &__button {
