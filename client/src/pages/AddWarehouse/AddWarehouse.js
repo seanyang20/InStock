@@ -77,17 +77,15 @@ export default function AddWarehouse(props) {
       address: streetAddress.value,
       city: city.value,
       country: country.value,
-      contact: {
-        name: contactName.value,
-        position: position.value,
-        phone: phoneNumber.value,
-        email: email.value,
-      },
+      contactName: contactName.value,
+      position: position.value,
+      phone: phoneNumber.value,
+      email: email.value,
     };
 
     console.log(newWarehouse);
     axios
-      .post(`${apiUrl}`, newWarehouse)
+      .post(`${apiUrl}/warehouses/add`, newWarehouse)
       .then(() => {
         props.history.push("/warehouses");
       })
