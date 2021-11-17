@@ -11,7 +11,7 @@ function App() {
         <Switch>
           <Route path="/" component={Warehouses} />
           <Route
-            path="/warehouses/:id"
+            path="/warehouses/:id/edit"
             render={(props) => {
               return <Warehouses {...props} />;
             }}

@@ -8,9 +8,6 @@ const path = require("path");
 require('dotenv').config();
 const { PORT, BACKEND_URL } = process.env;
 
-// init the express app in order to use express methods
-
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));

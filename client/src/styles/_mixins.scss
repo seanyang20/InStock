@@ -1,8 +1,14 @@
 @use "./variables" as *;
 
 // use the name variable for a breakpoint as width
-@mixin mQ($width) {
-  @media (min-width: $width) {
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
     @content;
   }
 }
@@ -23,4 +29,3 @@
     color: $instock-black;
   }
 }
-

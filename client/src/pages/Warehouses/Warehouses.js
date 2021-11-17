@@ -18,19 +18,16 @@ export default function Warehouses() {
         })
     }, [])
 
-    const handleAdd = () => {
-        
-    }
-
     return(
         <div className='warehouses'>
             <div className='warehouses__container'>
                 <div className='warehouses__header'>
                     <h1 className='warehouses__title'>Warehouses</h1>
-                    <input className='warehouses__search' placeholder='Search...'/>
-                    <button onClick={handleAdd} className='warehouses__button'>+ Add New Warehouse</button>
+                    <div className='warehouses__header-actions'>
+                        <input className='warehouses__search' placeholder='Search...'/>
+                        <button className='warehouses__button'>+ Add New Warehouse</button>
+                    </div>
                 </div>
-                {/* <WarehouseListItem/> */}
                 {warehouses.map((warehouse, index) => (
                     <WarehouseListItem key={index} warehouse={warehouse}/>
                 ))}
