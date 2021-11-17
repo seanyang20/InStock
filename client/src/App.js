@@ -1,6 +1,7 @@
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
+import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import Inventory from "./pages/Inventory/Inventory";
 import Footer from "./components/Footer/Footer";
 
@@ -10,6 +11,13 @@ function App() {
       <Router>
         {/* <Header/> */}
         <Switch>
+          <Route
+            exact
+            path="/warehouses/add"
+            render={(props) => {
+              return <AddWarehouse {...props} />;
+            }}
+          />
           <Route path="/warehouses" component={Warehouses} />
           <Route
             path="/warehouses/:id"
