@@ -22,6 +22,24 @@ router.get("/inventories", (req, res) => {
   res.json(inventoryData);
 });
 
+router.get("/inventories/:inventoryId", (req, res) => {
+  console.log("Inside Router /Get for a single inventory item");
+
+  console.log(req.params.inventoryId);
+  const singleInventory = inventoryData.find((inventory) => {
+    return inventory.id === req.params.inventoryId;
+})
+// console.log(singleInventory);
+if (singleInventory) {
+    res.json(singleInventory);
+} else {
+    res.status(404).send("We can't find that inventory item.");
+}
+
+});
+
+
+
 router.get("/warehouses/:warehouseId/inventories", (req, res) => {
   console.log("Inside Router /GET for getting inventories for given warehouse");
 
