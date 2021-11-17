@@ -114,7 +114,9 @@ export default function AddWarehouse() {
                   Warehouse Name
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="warehouseName"
                   placeholder="
@@ -122,7 +124,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.name && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -135,7 +141,9 @@ export default function AddWarehouse() {
                   Street Address
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="streetAddress"
                   placeholder="
@@ -143,7 +151,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.address && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -153,7 +165,9 @@ export default function AddWarehouse() {
                   City
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="city"
                   placeholder="
@@ -161,7 +175,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.city && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -171,7 +189,9 @@ export default function AddWarehouse() {
                   Country
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="country"
                   placeholder="
@@ -179,7 +199,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.country && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -195,7 +219,9 @@ export default function AddWarehouse() {
                   Contact Name
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="contactName"
                   placeholder="
@@ -203,7 +229,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.contactName && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -216,7 +246,9 @@ export default function AddWarehouse() {
                   Position
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="position"
                   placeholder="
@@ -224,7 +256,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.position && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -237,7 +273,9 @@ export default function AddWarehouse() {
                   Phone Number
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="phoneNumber"
                   placeholder="
@@ -245,7 +283,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.phone && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}
@@ -255,7 +297,9 @@ export default function AddWarehouse() {
                   Email
                 </label>
                 <input
-                  className="add-warehouse__input"
+                  className={`add-warehouse__input ${
+                    !validation.name && "add-warehouse__input--invalid"
+                  }`}
                   type="text"
                   name="email"
                   placeholder="
@@ -263,7 +307,11 @@ export default function AddWarehouse() {
                 ></input>
                 {!validation.email && (
                   <div className="add-warehouse__input-error">
-                    <img src={error} alt="error icon" />
+                    <img
+                      src={error}
+                      alt="error icon"
+                      className="add-warehouse__input-error-icon"
+                    />
                     <span>This field is required</span>
                   </div>
                 )}

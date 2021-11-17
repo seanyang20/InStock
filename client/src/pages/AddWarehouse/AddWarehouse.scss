@@ -90,6 +90,25 @@
     font-size: 0.813rem;
     line-height: 1.25rem;
     margin: 0.5rem 0;
+    &--invalid {
+      border-color: $out-of-stock;
+    }
+  }
+
+  &__input-error {
+    font-size: 0.688rem;
+    line-height: 1.25rem;
+    display: flex;
+    align-items: center;
+    color: $out-of-stock;
+    padding-bottom: 1rem;
+    @include mQ($breakpoint-tablet) {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__input-error-icon {
+    height: 1.5em;
   }
 
   &__buttons {
