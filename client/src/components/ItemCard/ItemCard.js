@@ -3,6 +3,7 @@ import editIcon from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 
 export default function ItemCard({ item }) {
+  console.log(item);
   return (
     <article className="item-card">
       <div className="item-card__title-cont">

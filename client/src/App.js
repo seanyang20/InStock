@@ -2,7 +2,6 @@ import "./App.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
-import InventoryList from "./components/InventoryList/InventoryList";
 
 function App() {
   return (
