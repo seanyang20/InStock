@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const uuid = require("uuid");
 
 // Read Data from JSON
 let warehouseData = [];
@@ -81,7 +82,7 @@ router.post("/add", (req, res) => {
       .send("One or more form input values is missing or invalid.");
   }
   const newWarehouse = {
-    id: "placeholder", //uuid
+    id: uuid.v4(),
     name: name,
     address: address,
     city: city,
