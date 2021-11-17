@@ -4,12 +4,13 @@ import Warehouses from "./pages/Warehouses/Warehouses";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import Inventory from "./pages/Inventory/Inventory";
 import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Header/> */}
+        <Header />
         <Switch>
           <Route
             exact

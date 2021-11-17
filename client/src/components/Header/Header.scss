@@ -1,0 +1,34 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins/" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  background-color: $background-dark;
+  height: 136px;
+  padding: 1.875rem 1rem 0;
+
+  &__logo {
+    height: 28px;
+  }
+  &__buttons-container {
+    margin-top: 1rem;
+  }
+
+  &__button {
+    height: 36px;
+    border-radius: 20px;
+    width: 50%;
+    border: none;
+    color: $slate;
+    background-color: $background-dark;
+    &:hover {
+      text-decoration: underline;
+      color: $white;
+    }
+  }
+
+  &__button--current {
+    color: $white;
+    background-color: $instock-black;
+  }
+}
