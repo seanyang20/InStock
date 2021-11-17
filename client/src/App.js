@@ -1,7 +1,8 @@
 import "./App.scss";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           />
           <Route path="/inventories" component={Inventory} />
         </Switch>
-        {/* <Footer/> */}
+        <Footer />
       </Router>
     </div>
   );
