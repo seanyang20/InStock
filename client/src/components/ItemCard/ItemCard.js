@@ -2,24 +2,24 @@ import "./ItemCard.scss";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 
-export default function ItemCard() {
+export default function ItemCard({ item }) {
   return (
     <article className="item-card">
       <div className="item-card__title-cont">
         <h6 className="item-card__subhead">INVENTORY ITEM</h6>
-        <p className="item-card__value">Television</p>
+        <p className="item-card__value">{item.itemName}</p>
       </div>
       <div className="item-card__cat-cont">
         <h6 className="item-card__subhead">CATEGORY</h6>
-        <p className="item-card__value">Electronics</p>
+        <p className="item-card__value">{item.category}</p>
       </div>
       <div className="item-card__stat-cont">
         <h6 className="item-card__subhead">STATUS</h6>
-        <p className="item-card__value">IN STOCK</p>
+        <p className="item-card__value">{item.status}</p>
       </div>
       <div className="item-card__qty-cont">
         <h6 className="item-card__subhead">QTY</h6>
-        <p className="item-card__value">500</p>
+        <p className="item-card__value">{item.quantity}</p>
       </div>
       <section className="item-card__chg-cont">
         <div className="item-card__delete-cont">

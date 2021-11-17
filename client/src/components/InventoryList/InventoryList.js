@@ -1,4 +1,5 @@
 import "./InventoryList.scss";
+import ItemCard from "../ItemCard/ItemCard";
 
 export default function InventoryList({ inventoryList }) {
   return (
@@ -15,9 +16,9 @@ export default function InventoryList({ inventoryList }) {
         </form>
       </article>
       <article>
-        {/* {inventoryList.map((item) => {
+        {inventoryList.map((item) => {
           <ItemCard key={item.id} item={item} />;
-        })} */}
+        })}
       </article>
     </section>
   );
