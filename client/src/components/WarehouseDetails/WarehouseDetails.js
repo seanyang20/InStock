@@ -1,5 +1,6 @@
 import "./WarehouseDetails.scss";
-import ItemCard from "../ItemCard/ItemCard";
+import backIcon from "../../assets/Icons/arrow_back-24px.svg";
+import editIcon from "../../assets/Icons/edit-24px.svg";
 
 export default function WarehouseDetails() {
   return (
@@ -12,9 +13,6 @@ export default function WarehouseDetails() {
         <div className="head__edit">
           <img className="head__edit--icon" alt="edit icon" />
         </div>
-      </article>
-      <article>
-        <ItemCard />
       </article>
     </section>
   );
