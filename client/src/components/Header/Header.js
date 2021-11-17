@@ -17,9 +17,10 @@ export default function Header() {
           <button
             onClick={handleClick}
             className={`header__button ${
-              location.pathname === "/warehouses"
-                ? "header__button--current"
-                : ""
+              location.pathname === "/warehouses" && "header__button--current"
+            } ${
+              location.pathname === "/warehouses/add" &&
+              "header__button--current"
             }`}
           >
             Warehouses
@@ -29,9 +30,7 @@ export default function Header() {
           <button
             onClick={handleClick}
             className={`header__button ${
-              location.pathname === "/inventories"
-                ? "header__button--current"
-                : ""
+              location.pathname === "/inventories" && "header__button--current"
             }`}
           >
             Inventory
