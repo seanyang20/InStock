@@ -1,16 +1,27 @@
 import "./ItemCard.scss";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
+import itemIcon from "../../assets/Icons/chevron_right-24px.svg";
 
 export default function ItemCard({ item }) {
-  console.log(item);
+  // conditional className based on status
+  let statusClass = "item-card__value";
+  if (item.status === "In Stock") {
+    statusClass = "item-card__value item-card__value--instock";
+  } else {
+    statusClass = "item-card__value item-card__value--outstock";
+  }
+
   return (
     <article className="item-card">
       <section className="item-card__info-section">
         <div className="item-card__info-section--left">
           <div className="item-card__title-cont">
             <h6 className="item-card__subhead">INVENTORY ITEM</h6>
-            <p className="item-card__value">{item.itemName}</p>
+            <p className="item-card__value--item">
+              {item.itemName}
+              {/* <img src={itemIcon} className="item-card__value--icon" alt="" /> */}
+            </p>
           </div>
           <div className="item-card__cat-cont">
             <h6 className="item-card__subhead">CATEGORY</h6>
@@ -20,7 +31,7 @@ export default function ItemCard({ item }) {
         <div className="item-card__info-section--right">
           <div className="item-card__stat-cont">
             <h6 className="item-card__subhead">STATUS</h6>
-            <p className="item-card__value">{item.status}</p>
+            <p className={statusClass}>{item.status}</p>
           </div>
           <div className="item-card__qty-cont">
             <h6 className="item-card__subhead">QTY</h6>
