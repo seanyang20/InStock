@@ -1,4 +1,3 @@
-import AddWarehouse from "../AddWarehouse/AddWarehouse";
 export default function Warehouses() {
-  return <AddWarehouse />;
+  return <h1>hello</h1>
 }

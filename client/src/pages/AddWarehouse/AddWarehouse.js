@@ -5,7 +5,7 @@ import error from "../../assets/Icons/error-24px.svg";
 import { useState } from "react";
 const apiUrl = "http://localhost:8080";
 
-export default function AddWarehouse() {
+export default function AddWarehouse(props) {
   const [validation, setValidation] = useState({
     name: true,
     address: true,
@@ -16,6 +16,11 @@ export default function AddWarehouse() {
     phone: true,
     email: true,
   });
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    props.history.push("/warehouses");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -83,8 +88,8 @@ export default function AddWarehouse() {
     console.log(newWarehouse);
     axios
       .post(`${apiUrl}`, newWarehouse)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        props.history.push("/warehouses");
       })
       .catch((error) => {
         console.log(error);
@@ -96,7 +101,7 @@ export default function AddWarehouse() {
     <article className="temp-background">
       <section className="add-warehouse">
         <div className="add-warehouse__header">
-          <img src={arrow} alt="arrow" />
+          <img onClick={handleClick} src={arrow} alt="arrow" />
           <h1 className="add-warehouse__title">Add New Warehouse</h1>
         </div>
 
@@ -319,7 +324,12 @@ export default function AddWarehouse() {
             </section>
           </div>
           <section className="add-warehouse__buttons">
-            <button className="add-warehouse__cancel-button">Cancel</button>
+            <button
+              onClick={handleClick}
+              className="add-warehouse__cancel-button"
+            >
+              Cancel
+            </button>
             <button type="submit" className="add-warehouse__add-button">
               + Add Warehouse
             </button>
