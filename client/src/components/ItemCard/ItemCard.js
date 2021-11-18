@@ -12,6 +12,10 @@ export default function ItemCard({ item }) {
     statusClass = "item-card__value item-card__value--outstock";
   }
 
+  const handleEdit = () => {};
+
+  const handleDelete = () => {};
+
   return (
     <article className="item-card">
       <section className="item-card__info-section">
@@ -49,6 +53,7 @@ export default function ItemCard({ item }) {
             className="item-card__delete-cont--icon"
             src={deleteIcon}
             alt="delete icon"
+            onClick={handleDelete}
           />
         </div>
         <div className="item-card__edit-cont">
@@ -56,6 +61,7 @@ export default function ItemCard({ item }) {
             className="item-card__edit-cont--icon"
             src={editIcon}
             alt="edit icon"
+            onClick={handleEdit}
           />
         </div>
       </section>
