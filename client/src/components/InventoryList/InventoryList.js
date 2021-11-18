@@ -2,6 +2,8 @@ import "./InventoryList.scss";
 import ItemCard from "../ItemCard/ItemCard";
 
 export default function InventoryList({ inventory }) {
+  const handleAdd = () => {};
+
   return (
     <section className="inventory-list">
       <article className="inventory-list__head">
