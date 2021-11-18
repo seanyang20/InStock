@@ -1,7 +1,7 @@
 import "./ItemCard.scss";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
-import itemIcon from "../../assets/Icons/chevron_right-24px.svg";
+// import itemIcon from "../../assets/Icons/chevron_right-24px.svg";
 
 export default function ItemCard({ item }) {
   // conditional className based on status
