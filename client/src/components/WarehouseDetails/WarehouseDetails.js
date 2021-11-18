@@ -12,6 +12,7 @@ export default function WarehouseDetails() {
         <h1 className="head__title">King West</h1>
         <div className="head__edit">
           <img className="head__edit--icon" src={editIcon} alt="edit icon" />
+          <p className="head__edit--txt">Edit</p>
         </div>
       </article>
       <article className="details">
