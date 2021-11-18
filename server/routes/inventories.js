@@ -28,17 +28,14 @@ router.get("/inventories/:inventoryId", (req, res) => {
   console.log(req.params.inventoryId);
   const singleInventory = inventoryData.find((inventory) => {
     return inventory.id === req.params.inventoryId;
-})
-// console.log(singleInventory);
-if (singleInventory) {
+  });
+  // console.log(singleInventory);
+  if (singleInventory) {
     res.json(singleInventory);
-} else {
+  } else {
     res.status(404).send("We can't find that inventory item.");
-}
-
+  }
 });
-
-
 
 router.get("/warehouses/:warehouseId/inventories", (req, res) => {
   console.log("Inside Router /GET for getting inventories for given warehouse");
@@ -52,7 +49,7 @@ router.get("/warehouses/:warehouseId/inventories", (req, res) => {
       inventory.warehouseID === warehouseId
   );
   console.log(warehouseInv);
-  // res.json(inventoriesData);
+  res.json(warehouseInv);
 });
 
 // module.exports = router;

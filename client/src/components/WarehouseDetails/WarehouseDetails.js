@@ -1,24 +1,30 @@
 import "./WarehouseDetails.scss";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import backIcon from "../../assets/Icons/arrow_back-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 
-const warehouse_API_URL = "http://localhost:8080/warehouses/";
+const warehouse_API_URL = "http://localhost:8080";
 
 export default function WarehouseDetails() {
-  const warehouseID = "2922c286-16cd-4d43-ab98-c79f698aeab0";
-  const [warehouse, setWarehouse] = useState([]);
+  let location = useLocation();
+  let path = location.pathname;
+
+  const [warehouse, setWarehouse] = useState(null);
+  const [inventory, setInventory] = useState(null);
 
   useEffect(() => {
-    axios.get(warehouse_API_URL + warehouseID).then((res) => {
+    axios.get(`${warehouse_API_URL}${path}`).then((res) => {
       setWarehouse(res.data);
+      console.log(res.data);
     });
   }, []);
 
   if (!warehouse) return null;
 
-  console.log(warehouse);
+  const warehouseID = warehouse.id;
+  console.log(warehouseID);
 
   return (
     <section className="warehouse-details">
