@@ -4,15 +4,25 @@
 
 .header {
   background-color: $background-dark;
-  height: 136px;
-  padding: 1.875rem 1rem 0;
+  height: 200px;
 
   @include mQ($breakpoint-tablet) {
-    height: 92px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem 0;
+    height: 186px;
+    padding-top: 27px;
+  }
+
+  &__nav {
+    padding: 1.875rem 1rem 0;
+
+    @include mQ($breakpoint-tablet) {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem 0;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
   }
 
   &__logo {
@@ -30,10 +40,17 @@
   &__button {
     height: 36px;
     border-radius: 20px;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
     width: 50%;
     border: none;
     color: $slate;
     background-color: $background-dark;
+
+    @include mQ($breakpoint-tablet) {
+      height: 38px;
+    }
+
     &:hover {
       text-decoration: underline;
       color: $white;
