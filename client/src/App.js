@@ -26,7 +26,12 @@ function App() {
               return <Warehouses {...props} />;
             }}
           />
-          <Route path="/inventories" component={Inventory} />
+          <Route
+            path="/inventories"
+            render={(props) => {
+              return <Inventory {...props} />;
+            }}
+          />
         </Switch>
         <Footer />
       </Router>

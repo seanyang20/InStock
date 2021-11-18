@@ -1,8 +1,11 @@
 import "./InventoryList.scss";
 import ItemCard from "../ItemCard/ItemCard";
 
-export default function InventoryList({ inventory }) {
-  const handleAdd = () => {};
+export default function InventoryList({ inventory, browseProps }) {
+  const handleAdd = (event) => {
+    event.preventDefault();
+    // browseProps.history.push("/inventories/add");
+  };
 
   return (
     <section className="inventory-list">
@@ -15,10 +18,10 @@ export default function InventoryList({ inventory }) {
               placeholder="Search..."
               className="inventory-list__form--input"
             />
-            <button className="inventory-list__form--button">
-              Add New Item
-            </button>
           </form>
+          <button className="inventory-list__form--button" onClick={handleAdd}>
+            Add New Item
+          </button>
         </div>
       </article>
       <article>
