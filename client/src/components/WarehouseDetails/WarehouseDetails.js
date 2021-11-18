@@ -16,9 +16,11 @@ export default function WarehouseDetails() {
   const [inventory, setInventory] = useState(null);
 
   useEffect(() => {
+    // axios call to get warehouse details of selected warehouse
     axios.get(`${warehouse_API_URL}${path}`).then((res) => {
       setWarehouse(res.data);
     });
+    // axios call to get the inventory list of selected warehouse
     axios.get(`${warehouse_API_URL}${path}/inventories`).then((res) => {
       setInventory(res.data);
     });
