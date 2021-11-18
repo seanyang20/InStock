@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import backIcon from "../../assets/Icons/arrow_back-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
+import ItemCard from "../ItemCard/ItemCard";
 
 const warehouse_API_URL = "http://localhost:8080";
 
@@ -17,14 +18,13 @@ export default function WarehouseDetails() {
   useEffect(() => {
     axios.get(`${warehouse_API_URL}${path}`).then((res) => {
       setWarehouse(res.data);
-      console.log(res.data);
+    });
+    axios.get(`${warehouse_API_URL}${path}/inventories`).then((res) => {
+      setInventory(res.data);
     });
   }, []);
 
   if (!warehouse) return null;
-
-  const warehouseID = warehouse.id;
-  console.log(warehouseID);
 
   return (
     <section className="warehouse-details">
@@ -57,6 +57,11 @@ export default function WarehouseDetails() {
             <p className="details__value">{warehouse.contact.email}</p>
           </div>
         </div>
+      </article>
+      <article>
+        {inventory.map((item) => (
+          <ItemCard key={item.id} item={item} />
+        ))}
       </article>
     </section>
   );
