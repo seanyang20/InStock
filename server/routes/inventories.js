@@ -38,7 +38,10 @@ if (singleInventory) {
 
 });
 
-
+// router.get("/selectedwarehouse", (req, res) => {
+//   console.log("Inside Router /Get for all inventory");
+//   res.json(inventoryData);
+// });
 
 router.get("/warehouses/:warehouseId/inventories", (req, res) => {
   console.log("Inside Router /GET for getting inventories for given warehouse");
@@ -53,6 +56,13 @@ router.get("/warehouses/:warehouseId/inventories", (req, res) => {
   );
   console.log(warehouseInv);
   // res.json(inventoriesData);
+
+  if (warehouseInv) {
+    res.json(warehouseInv);
+} else {
+    res.status(404).send("We can't find that warehouse.");
+}
+  
 });
 
 // module.exports = router;

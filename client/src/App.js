@@ -4,6 +4,7 @@ import Warehouses from "./pages/Warehouses/Warehouses";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import Inventory from "./pages/Inventory/Inventory";
 import Footer from "./components/Footer/Footer";
+import SelectedWarehouse from "./pages/SelectedWarehouse/SelectedWarehouse";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             }}
           />
           <Route path="/inventories" component={Inventory} />
+          {/* <Route 
+            path="/selectedwarehouse" component={SelectedWarehouse}
+          /> */}
         </Switch>
         <Footer />
       </Router>

@@ -1,19 +1,49 @@
-import { Component, useEffect, useState } from "react";
+import "./Warehouses.scss";
 import axios from "axios";
+import arrow from "../../assets/Icons/arrow_back-24px.svg";
+import error from "../../assets/Icons/error-24px.svg";
+import { useEffect, useState } from "react";
+import SelectedWarehouse from "../SelectedWarehouse/SelectedWarehouse";
 
-export default class Home extends Component {
+const apiUrl = "http://localhost:8080";
+
+export default function Warehouse(props) {
+    const [selectedWarehouse, setselectedWarehouse] = useState([]);
     
 
-    render () {
-        return (
-            <main className="warehouse">
-                <div className="warehouse__heading">
-                    <figure className="warehouse__backarrow"></figure>
-                    <div className="warehouse__title"></div>
-                    <button className="warehouse__edit-button"></button>
-                </div>    
-            </main>
-        )
-    }
-}
+    useEffect(() => {
+        // axios.get(`${apiUrl}/warehouses`).then((res) => {
+        //     console.log(res.data);
+        //     // props.history.push("/warehouses");
+        
+        // });
+      
+        // axios.get(`${apiUrl}/warehouses/2922c286-16cd-4d43-ab98-c79f698aeab0`).then((res) => {
+        //     console.log(res.data);
+        //     // props.history.push("/warehouses");
+         
+        // });
 
+        axios.get(`${apiUrl}/warehouses/2922c286-16cd-4d43-ab98-c79f698aeab0/inventories`).then((res) => {
+            console.log(res.data);
+            // props.history.push("/warehouses");
+            setselectedWarehouse(res.data);
+        });
+      }, []);
+
+
+  
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    // props.history.push("/warehouses");
+  };
+
+  if (!selectedWarehouse) return null;
+
+  return (
+    <>
+    <SelectedWarehouse inventoryList={selectedWarehouse}/>
+    </>
+  );
+}

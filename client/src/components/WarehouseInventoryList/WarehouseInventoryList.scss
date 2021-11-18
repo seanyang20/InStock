@@ -1,0 +1,40 @@
+// @use "../../styles/partials/global" as *;
+// @use "../../styles/partials/mixins/" as *;
+// @use "../../styles/partials/variables" as *;
+
+// .temp-background {
+//     background-color: $background-dark;
+//   }
+// .warehouse-details {
+//     margin: 0 1rem;
+//     background-color: white;
+//     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+//     border-radius: 2px;
+//     @include mQ($breakpoint-tablet) {
+//       margin: 0 2rem;
+//     }
+//     @include mQ($breakpoint-desktop) {
+//       max-width: 63.75rem;
+//       margin: 0 auto;
+//     }
+  
+//     &__header {
+//       display: flex;
+//       justify-content: center;
+//       padding: 1.5rem 0;
+//       @include mQ($breakpoint-tablet) {
+//         justify-content: flex-start;
+//         padding-left: 1rem;
+//       }
+//     }
+  
+//     &__title {
+//       font-size: 1.6rem;
+//       line-height: 2.25rem;
+//       padding-left: 0.25rem;
+//       @include mQ($breakpoint-tablet) {
+//         font-size: 2rem;
+//         line-height: 2.5rem;
+//       }
+//     }
+// }

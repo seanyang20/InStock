@@ -2,6 +2,7 @@ import "./InventoryList.scss";
 import ItemCard from "../ItemCard/ItemCard";
 
 export default function InventoryList({ inventory }) {
+  console.log(inventory);
   return (
     <section className="inventory-list">
       <article className="inventory-list__head">
@@ -16,9 +17,9 @@ export default function InventoryList({ inventory }) {
         </form>
       </article>
       <article>
-        {inventory.map((item) => (
+        {inventory.length !== 0 ? inventory.map((item) => (
           <ItemCard key={item.id} item={item} />
-        ))}
+        )) : <p> Loading </p>}
       </article>
     </section>
   );
