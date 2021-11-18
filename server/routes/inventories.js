@@ -131,9 +131,21 @@ router.get("/warehouses/:warehouseId/inventories", (req, res) => {
 });
 
 // post request for adding new inventory item
-router.post("/inventories/add", (req, res) => {
+router.post("/warehouses/:warehouseId/inventories", (req, res) => {
   const { itemName, warehouseName, description, category, status, quantity } =
     req.body;
+
+  const warehouseID = req.params.warehouseId;
+
+  //check if warehouse Id matches the selected warehouse
+  const findWarehouse = inventoryData.find(
+    (inventory) => inventory.warehouseID === warehouseID
+  );
+
+  if (findWarehouse.warehouseName !== warehouseName) {
+    res.status(400).send("Warehouse ID does not match selected warehouse.");
+  }
+
   if (
     !itemName ||
     !warehouseName ||
@@ -142,16 +154,8 @@ router.post("/inventories/add", (req, res) => {
     !status ||
     !quantity
   ) {
-    res
-      .status(400)
-      .send("One or more form input values is missing or invalid.");
+    res.status(400).send("One or more form values is missing or invalid.");
   }
-
-  //find warehouse ID from the warehouse name input
-  const findWarehouse = inventoryData.find(
-    (inventory) => inventory.warehouseName === warehouseName
-  );
-  const warehouseID = findWarehouse.warehouseID;
 
   const newInventory = {
     id: uuid.v4(),
@@ -164,8 +168,18 @@ router.post("/inventories/add", (req, res) => {
     quantity: quantity,
   };
 
-  // inventoryData.push(newInventory);
-  // writeinventoryData(inventoryData);
+  inventoryData.push(newInventory);
+  fs.writeFile(
+    "./data/inventories.json",
+    JSON.stringify(inventoryData),
+    (err) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      console.log("File written successfully!");
+      res.status(201).json(inventoryData);
+    }
+  );
 
   res.json(newInventory);
 });
