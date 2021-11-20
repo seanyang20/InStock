@@ -1,0 +1,89 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins/" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-inventory {
+  margin: 0 1rem;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 2px;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    line-height: 2.25rem;
+    padding-left: 0.25rem;
+  }
+
+  &__form-section {
+    border-top: 1px solid $cloud;
+    padding: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding: 0.5rem 0;
+  }
+
+  &__label {
+  }
+
+  &__details-name {
+  }
+
+  &__details-description {
+  }
+
+  &__select {
+  }
+
+  &__availability {
+  }
+
+  &__radio {
+  }
+
+  &__radio-label {
+  }
+
+  &__quantity {
+  }
+
+  &__buttons {
+    background-color: $background-light;
+    display: flex;
+    padding: 1rem;
+  }
+
+  &__cancel {
+    width: 50%;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    height: 36px;
+    background-color: $white;
+    border-radius: 20px;
+    color: $slate;
+    border: 1px solid $cloud;
+    padding: 0 1rem;
+    margin-right: 0.5rem;
+  }
+
+  &__add-button {
+    width: 50%;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    height: 36px;
+    background-color: $instock-indigo;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 0 1rem;
+    margin-left: 0.5rem;
+  }
+}
