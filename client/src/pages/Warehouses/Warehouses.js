@@ -4,13 +4,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 const apiUrl = 'http://localhost:8080'
 
-export default function Warehouses() {
+export default function Warehouses(props) {
     const [warehouses, setWarehouses] = useState([])
 
     useEffect(() => {
         axios.get(`${apiUrl}/warehouses`)
         .then((response) => {
-            console.log(response)
             setWarehouses(response.data)
         })
         .catch((err) => {

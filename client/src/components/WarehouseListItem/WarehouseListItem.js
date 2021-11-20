@@ -1,4 +1,5 @@
 import './WarehouseListItem.scss';
+import { Link } from 'react-router-dom'
 
 export default function WarehouseListItem(props) {
 
@@ -29,7 +30,7 @@ export default function WarehouseListItem(props) {
             </div>
             <div className='warehouse-item__buttons'>
                 <div className='warehouse-item__delete'/>
-                <div className='warehouse-item__edit'/>
+                <Link to={`/warehouses/edit/${props.warehouse.id}`} className='warehouse-item__edit'></Link>
             </div>
         </div>
     );
