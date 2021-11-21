@@ -1,0 +1,171 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+
+// Button to initiate Modal (this will be the trash can)
+.deleteModal__button {
+  margin-top: 2rem;
+  width: 200px;
+  height: 25px;
+}
+// General Modal styling. Do not touch
+.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //   background: rgba(0, 0, 0, 0.6);
+  background: $instock-black;
+  opacity: 0.7;
+}
+
+.display-block {
+  display: flex;
+  justify-content: center;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-box {
+  border-radius: 3px;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  background-color: white;
+
+  @include mQ($breakpoint-tablet) {
+    margin: 11.5rem 3rem 36rem 3rem;
+    height: 262px;
+    width: 672px;
+  }
+
+  @include mQ($breakpoint-desktop) {
+    font-size: 16px;
+  }
+}
+
+.modal-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+
+  @include mQ($breakpoint-tablet) {
+    height: 40px;
+  }
+
+  @include mQ($breakpoint-desktop) {
+    height: 40px;
+  }
+}
+
+.modal-close {
+  display: flex;
+  width: 30px;
+
+  background-color: white;
+  border: none;
+
+  &--cross {
+    font-size: 2rem;
+    color: $instock-black;
+  }
+}
+
+.modal-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: white;
+  height: auto;
+  margin: 0rem 1rem;
+
+  @include mQ($breakpoint-tablet) {
+    margin: 0 4rem;
+  }
+
+  &__header {
+    font-size: 28px;
+    text-align: left;
+
+    @include mQ($breakpoint-tablet) {
+      font-size: 32px;
+    }
+  }
+
+  &__text {
+    text-align: left;
+    font-size: 15px;
+    line-height: 26px;
+    margin-top: 16px;
+    margin-right: 96px;
+
+    @include mQ($breakpoint-tablet) {
+      font-size: 16px;
+    }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  padding: 16px;
+  width: 100vw;
+  bottom: 0px;
+
+  @include mQ($breakpoint-tablet) {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    padding: 2rem 4rem 2.5rem;
+  }
+}
+
+.modal-button--cancel {
+  width: 50%;
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  height: 36px;
+  background-color: $white;
+  border-radius: 20px;
+  color: $slate;
+  border: 1px solid $cloud;
+  padding: 0 1rem;
+  margin-right: 0.5rem;
+  @include mQ($breakpoint-tablet) {
+    height: 38px;
+    width: auto;
+  }
+  &:hover {
+    color: $instock-indigo;
+    border: 1px solid $instock-indigo;
+  }
+}
+
+.modal-button--delete {
+  width: 50%;
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  height: 36px;
+  background-color: $out-of-stock;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  padding: 0 1rem;
+  margin-left: 0.5rem;
+  @include mQ($breakpoint-tablet) {
+    height: 38px;
+    width: auto;
+  }
+  &:hover {
+    background-color: $background-dark;
+  }
+}
