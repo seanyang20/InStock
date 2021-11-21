@@ -16,7 +16,7 @@ export default function EditWarehouse(props) {
         .catch((err) => {
             console.log(err)
         })
-    }, [props.match.params.id]) 
+    }, [props.match.params.id])
 
     const handleSubmit = (event) => {
         event.preventDefault()
