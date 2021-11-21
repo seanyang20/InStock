@@ -9,6 +9,8 @@ const apiUrl = "http://localhost:8080";
 export default function AddInventory() {
   const [warehouses, setWarehouses] = useState([]);
   const [inStock, setInStock] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     axios
@@ -18,7 +20,7 @@ export default function AddInventory() {
         console.log(res.data);
         let warehouseArr = res.data.map((warehouse) => {
           const container = {};
-          container.value = warehouse.name.toLowerCase();
+          container.value = warehouse.name;
           container.label = warehouse.name;
           return container;
         });
@@ -49,13 +51,38 @@ export default function AddInventory() {
     { value: "health", label: "Health" },
   ];
 
+  const handleWarehouseChange = (selectedWarehouse) => {
+    setSelectedWarehouse(selectedWarehouse);
+    console.log(selectedWarehouse);
+  };
+
+  const handleCategoryChange = (selectedCategory) => {
+    setSelectedCategory(selectedCategory);
+    console.log(selectedCategory);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { itemName, itemDescription, status, quantity } = event.target;
+    const newInventory = {
+      warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
+      warehouseName: selectedWarehouse.value,
+      itemName: itemName.value,
+      description: itemDescription.value,
+      category: selectedCategory.value,
+      status: `{}`
+      quantity: quantity.value,
+    };
+    console.log(newInventory);
+  };
+
   return (
     <article className="add-inventory">
       <section className="add-inventory__header">
         <img onClick="" src={arrow} alt="arrow" />
         <h1 className="add-inventory__title">Add New Inventory Item</h1>
       </section>
-      <form className="add-inventory__form">
+      <form onSubmit={handleSubmit} className="add-inventory__form">
         <section className="add-inventory__form-section">
           <h2 className="add-inventory__subtitle">Item details</h2>
           <label className="add-inventory__label">Item Name</label>
@@ -63,18 +90,22 @@ export default function AddInventory() {
             type="text"
             className="add-inventory__details-name"
             placeholder="Item Name"
+            name="itemName"
           ></input>
           <label className="add-inventory__label">Description</label>
           <textarea
             type="text"
             className="add-inventory__details-description"
             placeholder="Please enter a brief item description..."
+            name="itemDescription"
           ></textarea>
           <label className="add-inventory__label">Category</label>
           <Select
             className="add-inventory__select"
             options={categoryOptions}
             placeholder="Please select"
+            name="category"
+            onChange={handleCategoryChange}
           />
         </section>
         <section className="add-inventory__form-section">
@@ -114,12 +145,15 @@ export default function AddInventory() {
               !inStock && "add-inventory__quantity--hidden"
             }`}
             placeholder="0"
+            name="quantity"
           ></input>
           <label className="add-inventory__label">Warehouse</label>
           <Select
             className="add-inventory__select"
             options={warehouses}
             placeholder="Please select"
+            name="warehouse"
+            onChange={handleWarehouseChange}
           />
         </section>
         <section className="add-inventory__buttons">
