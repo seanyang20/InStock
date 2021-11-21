@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 
 
-.editWarehouse {
+.editInventory {
   height: 100vh;
   width: 100vw;
   background-color: $background-light;
@@ -43,7 +43,7 @@
     margin: 1.5rem;
     margin-top: 2rem;
     align-self: center;
-    // background: url(../../assets/icons/arrow_back-24px.svg) no-repeat;
+    background: url('../../assets/Icons/arrow_back-24px.svg') no-repeat;
     background-size: auto;
     background-position: center;
     padding: 1rem;
@@ -88,6 +88,7 @@
     flex-direction: column;
     border-top: 1px solid $cloud;
     margin-bottom: 1rem;
+    height: 100%;
 
     &-title {
       font-family: "Titillium Web Semi Bold";
@@ -97,6 +98,32 @@
 
     @include mQ($breakpoint-tablet) {
       margin: 2rem 1rem;
+      border: none;
+      width: 50%;
+    }
+
+    &-title {
+      font-family: "Titillium Web Semi Bold";
+      align-self: flex-start;
+      margin: 1rem 1.5rem;
+    }
+  }
+
+  &__availability {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $cloud;
+    margin-bottom: 1rem;
+    height: 100%;
+
+    &-title {
+      font-family: "Titillium Web Semi Bold";
+      align-self: flex-start;
+      margin: 1rem 1.5rem;
+    }
+
+    @include mQ($breakpoint-tablet) {
+      margin: 2rem 1rem auto 1rem;
       border: none;
       width: 50%;
     }
@@ -126,6 +153,15 @@
       font-size: 1rem;
       margin: 0.25rem 1.5rem;
     }
+  }
+
+  &__description {
+    height: 6rem;
+  }
+
+  &__status {
+      text-align: left;
+      margin: 0 0 1rem 1.5rem;
   }
 
   &__actions {
