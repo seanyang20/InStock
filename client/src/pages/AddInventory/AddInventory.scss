@@ -39,6 +39,9 @@
     font-family: $font-semi;
     font-size: 0.813rem;
     line-height: 1.25rem;
+    &--hidden {
+      display: none;
+    }
   }
 
   &__details-name {
@@ -92,6 +95,9 @@
     font-size: 0.813rem;
     line-height: 1.25rem;
     margin-bottom: 1rem;
+    &--hidden {
+      display: none;
+    }
   }
 
   &__buttons {

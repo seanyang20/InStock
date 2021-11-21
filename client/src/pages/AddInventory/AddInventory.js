@@ -8,6 +8,7 @@ const apiUrl = "http://localhost:8080";
 
 export default function AddInventory() {
   const [warehouses, setWarehouses] = useState([]);
+  const [inStock, setInStock] = useState(false);
 
   useEffect(() => {
     axios
@@ -29,6 +30,16 @@ export default function AddInventory() {
         console.log(error);
       });
   }, []);
+
+  const handleRadioTrue = () => {
+    setInStock(true);
+    console.log(inStock);
+  };
+
+  const handleRadioFalse = () => {
+    setInStock(false);
+    console.log(inStock);
+  };
 
   const categoryOptions = [
     { value: "accessories", label: "Accessories" },
@@ -68,22 +79,40 @@ export default function AddInventory() {
         </section>
         <section className="add-inventory__form-section">
           <h2 className="add-inventory__subtitle">Item Availability</h2>
-
           <h4 className="add-inventory__label">Status</h4>
           <div className="add-inventory__radio-buttons">
             <div className="add-inventory__radio-button-container">
-              <input type="radio" className="add-inventory__radio"></input>
+              <input
+                name="status"
+                type="radio"
+                className="add-inventory__radio"
+                onClick={handleRadioTrue}
+              ></input>
               <label className="add-inventory__radio-label">In stock</label>
             </div>
             <div className="add-inventory__radio-button-container">
-              <input type="radio" className="add-inventory__radio"></input>
+              <input
+                name="status"
+                type="radio"
+                className="add-inventory__radio"
+                onClick={handleRadioFalse}
+              ></input>
               <label className="add-inventory__radio-label">Out of stock</label>
             </div>
           </div>
-          <label className="add-inventory__label">Quantity</label>
+          <label
+            className={`add-inventory__label ${
+              !inStock && "add-inventory__label--hidden"
+            }`}
+          >
+            Quantity
+          </label>
+
           <input
             type="number"
-            className="add-inventory__quantity"
+            className={`add-inventory__quantity ${
+              !inStock && "add-inventory__quantity--hidden"
+            }`}
             placeholder="0"
           ></input>
           <label className="add-inventory__label">Warehouse</label>
