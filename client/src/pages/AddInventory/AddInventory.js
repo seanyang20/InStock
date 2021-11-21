@@ -10,19 +10,24 @@ export default function AddInventory() {
   const [warehouses, setWarehouses] = useState([]);
 
   useEffect(() => {
-    axios.get(`${apiUrl}/warehouses`).then((res) => {
-      console.log("got warehouses");
-      console.log(res.data);
-      let warehouseArr = res.data.map((warehouse) => {
-        const container = {};
-        container.value = warehouse.name.toLowerCase();
-        container.label = warehouse.name;
-        return container;
+    axios
+      .get(`${apiUrl}/warehouses`)
+      .then((res) => {
+        console.log("got warehouses");
+        console.log(res.data);
+        let warehouseArr = res.data.map((warehouse) => {
+          const container = {};
+          container.value = warehouse.name.toLowerCase();
+          container.label = warehouse.name;
+          return container;
+        });
+        console.log(warehouseArr);
+        setWarehouses(warehouseArr);
+        console.log(warehouses);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      console.log(warehouseArr);
-      setWarehouses(warehouseArr);
-      console.log(warehouses);
-    });
   }, []);
 
   const categoryOptions = [
@@ -43,27 +48,56 @@ export default function AddInventory() {
         <section className="add-inventory__form-section">
           <h2 className="add-inventory__subtitle">Item details</h2>
           <label className="add-inventory__label">Item Name</label>
-          <input className="add-inventory__details-name"></input>
+          <input
+            type="text"
+            className="add-inventory__details-name"
+            placeholder="Item Name"
+          ></input>
           <label className="add-inventory__label">Description</label>
-          <textarea className="add-inventory__details-description"></textarea>
+          <textarea
+            type="text"
+            className="add-inventory__details-description"
+            placeholder="Please enter a brief item description..."
+          ></textarea>
           <label className="add-inventory__label">Category</label>
-          <Select className="add-inventory__select" options={categoryOptions} />
+          <Select
+            className="add-inventory__select"
+            options={categoryOptions}
+            placeholder="Please select"
+          />
         </section>
         <section className="add-inventory__form-section">
           <h2 className="add-inventory__subtitle">Item Availability</h2>
-          <h3 className="add-inventory__label">Status</h3>
-          <input type="radio" className="add-inventory__radio"></input>
-          <label className="add-inventory__radio-label">In stock</label>
-          <input type="radio" className="add-inventory__radio"></input>
-          <label className="add-inventory__radio-label">Out of Stock</label>
+
+          <h4 className="add-inventory__label">Status</h4>
+          <div className="add-inventory__radio-buttons">
+            <div className="add-inventory__radio-button-container">
+              <input type="radio" className="add-inventory__radio"></input>
+              <label className="add-inventory__radio-label">In stock</label>
+            </div>
+            <div className="add-inventory__radio-button-container">
+              <input type="radio" className="add-inventory__radio"></input>
+              <label className="add-inventory__radio-label">Out of stock</label>
+            </div>
+          </div>
           <label className="add-inventory__label">Quantity</label>
-          <input type="number" className="add-inventory__quantity"></input>
+          <input
+            type="number"
+            className="add-inventory__quantity"
+            placeholder="0"
+          ></input>
           <label className="add-inventory__label">Warehouse</label>
-          <Select className="add-inventory__select" options={warehouses} />
+          <Select
+            className="add-inventory__select"
+            options={warehouses}
+            placeholder="Please select"
+          />
         </section>
         <section className="add-inventory__buttons">
           <button className="add-inventory__cancel">Cancel</button>
-          <button className="add-inventory__add-button">+ Add Item</button>
+          <button type="submit" className="add-inventory__add-button">
+            + Add Item
+          </button>
         </section>
       </form>
     </article>

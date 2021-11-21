@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 
 .add-inventory {
-  margin: 0 1rem;
+  margin: 0 1.5rem;
   background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 2px;
@@ -29,30 +29,69 @@
     font-size: 1.25rem;
     line-height: 1.75rem;
     padding: 0.5rem 0;
+    margin-bottom: 1.5rem;
+  }
+  &__form {
+    text-align: left;
   }
 
   &__label {
+    font-family: $font-semi;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
   }
 
   &__details-name {
+    @include inputBorder;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   &__details-description {
+    @include inputBorder;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    resize: none;
+    height: 120px;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   &__select {
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin-bottom: 1rem;
   }
 
-  &__availability {
+  &__radio-buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
-
+  &__radio-button-container {
+    margin-bottom: 1rem;
+    &:last-of-type {
+      margin-left: 6rem;
+    }
+  }
   &__radio {
+    margin-right: 0.25rem;
   }
 
   &__radio-label {
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    &:first-child {
+      margin-right: 4.5rem;
+    }
   }
 
   &__quantity {
+    @include inputBorder;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   &__buttons {
