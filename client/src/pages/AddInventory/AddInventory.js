@@ -8,6 +8,7 @@ const apiUrl = "http://localhost:8080";
 
 export default function AddInventory() {
   const [warehouses, setWarehouses] = useState([]);
+  const [allWarehouseData, setAllWarehouseData] = useState([]);
   const [inStock, setInStock] = useState(false);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -16,7 +17,6 @@ export default function AddInventory() {
     axios
       .get(`${apiUrl}/warehouses`)
       .then((res) => {
-        console.log("got warehouses");
         console.log(res.data);
         let warehouseArr = res.data.map((warehouse) => {
           const container = {};
@@ -24,9 +24,8 @@ export default function AddInventory() {
           container.label = warehouse.name;
           return container;
         });
-        console.log(warehouseArr);
         setWarehouses(warehouseArr);
-        console.log(warehouses);
+        setAllWarehouseData(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -63,15 +62,21 @@ export default function AddInventory() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { itemName, itemDescription, status, quantity } = event.target;
+    const { itemName, itemDescription, quantity } = event.target;
+    const status = inStock ? "In Stock" : "Out of Stock";
+    const updatedQuantity = inStock ? quantity.value : 0;
+    // const warehouseID = allWarehouseData.find(({warehouse}) => {
+    // warehouse.name === selectedWarehouse.value;
+    // }
+
     const newInventory = {
       warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
       warehouseName: selectedWarehouse.value,
       itemName: itemName.value,
       description: itemDescription.value,
       category: selectedCategory.value,
-      status: `{}`
-      quantity: quantity.value,
+      status: status,
+      quantity: updatedQuantity,
     };
     console.log(newInventory);
   };
