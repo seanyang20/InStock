@@ -20,6 +20,7 @@ export default function EditWarehouse(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
         const updatedWarehouse = {
             name: event.target.warehouseName.value,
             address: event.target.warehouseAddress.value,
@@ -41,6 +42,7 @@ export default function EditWarehouse(props) {
             console.log(err)
         })
     }
+
     return (
         <div className='editWarehouse'>
             <form onSubmit={handleSubmit} className='editWarehouse__container'>
