@@ -13,6 +13,12 @@
   }
 }
 
+@mixin mQ($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
 // input border style
 @mixin inputBorder {
   height: 36px;

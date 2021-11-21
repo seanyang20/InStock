@@ -1,0 +1,163 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins/" as *;
+@use "../../styles/partials/variables" as *;
+
+.temp-background {
+  background-color: $background-dark;
+}
+.add-warehouse {
+  margin: 0 1rem;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 2px;
+  @include mQ($breakpoint-tablet) {
+    margin: 0 2rem;
+  }
+  @include mQ($breakpoint-desktop) {
+    max-width: 63.75rem;
+    margin: 0 auto;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+    @include mQ($breakpoint-tablet) {
+      justify-content: flex-start;
+      padding-left: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    line-height: 2.25rem;
+    padding-left: 0.25rem;
+    @include mQ($breakpoint-tablet) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  &__form {
+    text-align: left;
+    @include mQ($breakpoint-tablet) {
+      border-top: 1px solid $cloud;
+    }
+  }
+  &__flex-container {
+    @include mQ($breakpoint-tablet) {
+      display: flex;
+    }
+  }
+  &__form-section {
+    border-top: 1px solid $cloud;
+    padding: 1rem;
+    @include mQ($breakpoint-tablet) {
+      margin: 1.5rem 0;
+      padding: 1rem 2rem;
+      border-top: none;
+      flex-grow: 1;
+    }
+    &:last-of-type {
+      @include mQ($breakpoint-tablet) {
+        border-left: 1px solid $cloud;
+      }
+    }
+  }
+
+  &__section-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding: 0.5rem 0;
+    @include mQ($breakpoint-tablet) {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+
+  &__input-label {
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
+    @include mQ($breakpoint-tablet) {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+
+  &__input {
+    @include inputBorder;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin: 0.5rem 0;
+    &--invalid {
+      border-color: $out-of-stock;
+    }
+  }
+
+  &__input-error {
+    font-size: 0.688rem;
+    line-height: 1.25rem;
+    display: flex;
+    align-items: center;
+    color: $out-of-stock;
+    padding-bottom: 1rem;
+    @include mQ($breakpoint-tablet) {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__input-error-icon {
+    height: 1.5em;
+  }
+
+  &__buttons {
+    background-color: $background-light;
+    display: flex;
+    padding: 1rem;
+    @include mQ($breakpoint-tablet) {
+      justify-content: flex-end;
+    }
+  }
+  
+  &__cancel-button {
+    width: 50%;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    height: 36px;
+    background-color: $white;
+    border-radius: 20px;
+    color: $slate;
+    border: 1px solid $cloud;
+    padding: 0 1rem;
+    margin-right: 0.5rem;
+    @include mQ($breakpoint-tablet) {
+      height: 38px;
+      width: auto;
+    }
+    &:hover {
+      color: $instock-indigo;
+      border: 1px solid $instock-indigo;
+    }
+  }
+
+  &__add-button {
+    width: 50%;
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    height: 36px;
+    background-color: $instock-indigo;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 0 1rem;
+    margin-left: 0.5rem;
+    @include mQ($breakpoint-tablet) {
+      height: 38px;
+      width: auto;
+    }
+    &:hover {
+      background-color: $background-dark;
+    }
+  }
+}

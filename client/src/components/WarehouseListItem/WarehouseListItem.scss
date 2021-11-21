@@ -1,7 +1,7 @@
-@use "../../styles/global" as *;
-@use "../../styles/mixins" as *;
-@use "../../styles/typography" as *;
-@use "../../styles/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
 
 .warehouse-item {
   display: flex;
