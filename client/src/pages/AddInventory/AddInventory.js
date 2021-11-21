@@ -1,8 +1,38 @@
 import "./AddInventory.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import arrow from "../../assets/Icons/arrow_back-24px.svg";
 import Select from "react-select";
 
+const apiUrl = "http://localhost:8080";
+
 export default function AddInventory() {
+  const [warehouses, setWarehouses] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${apiUrl}/warehouses`).then((res) => {
+      console.log("got warehouses");
+      console.log(res.data);
+      let warehouseArr = res.data.map((warehouse) => {
+        const container = {};
+        container.value = warehouse.name.toLowerCase();
+        container.label = warehouse.name;
+        return container;
+      });
+      console.log(warehouseArr);
+      setWarehouses(warehouseArr);
+      console.log(warehouses);
+    });
+  }, []);
+
+  const categoryOptions = [
+    { value: "accessories", label: "Accessories" },
+    { value: "apparel", label: "Apparel" },
+    { value: "electronics", label: "Electronics" },
+    { value: "gear", label: "Gear" },
+    { value: "health", label: "Health" },
+  ];
+
   return (
     <article className="add-inventory">
       <section className="add-inventory__header">
@@ -17,7 +47,7 @@ export default function AddInventory() {
           <label className="add-inventory__label">Description</label>
           <textarea className="add-inventory__details-description"></textarea>
           <label className="add-inventory__label">Category</label>
-          <Select className="add-inventory__select" />
+          <Select className="add-inventory__select" options={categoryOptions} />
         </section>
         <section className="add-inventory__form-section">
           <h2 className="add-inventory__subtitle">Item Availability</h2>
@@ -29,7 +59,7 @@ export default function AddInventory() {
           <label className="add-inventory__label">Quantity</label>
           <input type="number" className="add-inventory__quantity"></input>
           <label className="add-inventory__label">Warehouse</label>
-          <Select className="add-inventory__select" />
+          <Select className="add-inventory__select" options={warehouses} />
         </section>
         <section className="add-inventory__buttons">
           <button className="add-inventory__cancel">Cancel</button>
