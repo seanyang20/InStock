@@ -5,41 +5,63 @@ const path = require("path");
 const uuid = require("uuid");
 
 // Read Data from JSON
-let warehouseData = [];
+let warehousesData = [];
 
 const getWarehouseData = () => {
-  fs.readFile("./data/warehouses.json", (err, data) => {
+  fs.readFile('./data/warehouses.json', (err, data) => {
     if (err) {
       console.log(err);
       return;
     }
-    warehouseData = JSON.parse(data);
+    warehousesData = JSON.parse(data);
   });
 };
-// Return data from JSON
+
+// Read data from JSON
 getWarehouseData();
 
-// Router.get for all warehouses
-router.get("/", (req, res) => {
-  console.log("Inside Router Get for all warehouses");
-
-  res.json(warehouseData);
+// Retrive data for all warehouses
+router.get("/", (_req, res) => {
+  res.json(warehousesData);
 });
 
-// Router.get for getting a single warehouse
-router.get("/:warehouseId", (req, res) => {
-  console.log("Inside Router Get for a specific warehouse");
+// Retrive data for one warehouse
+router.get("/:id", (req, res) => {
+  let warehouse = warehousesData.find((warehouse) => {
+    return warehouse.id === req.params.id
+  })
 
-  const singleWarehouse = warehouseData.find((warehouse) => {
-    return warehouse.id === req.params.warehouseId;
-  });
-  // console.log(singleWarehouse);
-  if (singleWarehouse) {
-    res.json(singleWarehouse);
-  } else {
-    res.status(404).send("We can't find that warehouse.");
+  if(warehouse)
+    res.json(warehouse);
+  else
+    res.status(404).send('Warehouse with that ID was not found')
+});
+
+// Edit a specific warehouse's details
+router.put("/:id", (req, res) => {
+  let warehouse = warehousesData.find((warehouse) => {
+    return warehouse.id === req.params.id
+  })
+
+  if(warehouse) {
+    const { name, address, city, country, contact } = req.body
+    warehouse.name = name
+    warehouse.address = address
+    warehouse.city = city
+    warehouse.country = country
+    warehouse.contact = contact
+
+    fs.writeFile('./data/warehouses.json', JSON.stringify(warehousesData), (err) => {
+      if(err)
+        res.status(500).send(err)
+      
+        console.log('Warehouse updated successfully')
+        res.status(201).send(warehouse)
+    })
   }
-});
+  else
+    res.status(404).send('Warehouse with that ID was not found')
+})
 
 //write data to json
 const writeWareHouseData = (data) => {
@@ -100,5 +122,4 @@ router.post("/add", (req, res) => {
   res.json(newWarehouse);
 });
 
-// module.exports = router;
 module.exports = router;
