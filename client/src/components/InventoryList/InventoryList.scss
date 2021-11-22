@@ -4,13 +4,11 @@
 
 body {
   background: #f7f8f9;
-  position: relative;
 }
 
 .inventory-list {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   margin: 0 1rem;
   border-radius: 0.1875rem;
   box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
