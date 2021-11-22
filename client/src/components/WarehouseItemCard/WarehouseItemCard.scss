@@ -12,9 +12,6 @@
   @media screen and (min-width: $breakpoint-tablet) {
     flex-wrap: nowrap;
     justify-content: space-around;
-    border: none;
-    border-bottom: 1px solid $cloud;
-    height: 5rem;
   }
 
   &__left {

@@ -1,0 +1,258 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins/" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.editInventory {
+  height: 100vh;
+  width: 100vw;
+  background-color: $background-light;
+  padding-bottom: 6rem;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    margin: -1rem 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    
+
+    @include mQ($breakpoint-tablet) {
+      margin: 0rem 2rem;
+    }
+
+    @include mQ($breakpoint-desktop){
+      margin: 0rem 10.5rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: -6rem;
+    z-index: 1;
+    background-color: $white;
+
+    @include mQ($breakpoint-tablet){
+      align-items: center;
+      border-bottom: 1px solid $cloud;
+    }
+  }
+
+  &__arrow {
+    width: 1rem;
+    height: 1rem;
+    margin: 1.5rem;
+    margin-top: 2rem;
+    align-self: center;
+    background: url('../../assets/Icons/arrow_back-24px.svg') no-repeat;
+    background-size: auto;
+    background-position: center;
+    padding: 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    align-self: flex-start;
+    font-family: "Titillium Web Semi Bold";
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    margin: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 0;
+    width: fit-content;
+  }
+
+  &__sections {
+    @include mQ($breakpoint-tablet) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-divider {
+      display: none;
+
+      @include mQ($breakpoint-tablet) {
+        display: flex;
+        background-color: $cloud;
+        width: 1px;
+        height: 350px;
+      }
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $cloud;
+    margin-bottom: 1rem;
+    height: 100%;
+
+    &-title {
+      font-family: "Titillium Web Semi Bold";
+      align-self: flex-start;
+      margin: 1rem 1.5rem;
+    }
+
+    @include mQ($breakpoint-tablet) {
+      margin: 2rem 1rem;
+      border: none;
+      width: 50%;
+    }
+
+    &-title {
+      font-family: "Titillium Web Semi Bold";
+      align-self: flex-start;
+      margin: 1rem 1.5rem;
+    }
+  }
+
+  &__availability {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $cloud;
+    margin-bottom: 1rem;
+    height: 100%;
+
+    &-title {
+      font-family: "Titillium Web Semi Bold";
+      align-self: flex-start;
+      margin: 1rem 1.5rem;
+    }
+
+    @include mQ($breakpoint-tablet) {
+      margin: 2rem 1rem auto 1rem;
+      border: none;
+      width: 50%;
+    }
+
+    &-title {
+      font-family: "Titillium Web Semi Bold";
+      align-self: flex-start;
+      margin: 1rem 1.5rem;
+    }
+  }
+
+  &__input {
+    font-family: "Titillium Web Regular";
+    height: 2rem;
+    border: 1px solid $cloud;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 1.5rem;
+    margin-top: 0;
+    &::placeholder {
+      color: black;
+    }
+
+    &-title {
+      align-self: flex-start;
+      font-family: "Titillium Web Semi Bold";
+      font-size: 1rem;
+      margin: 0.25rem 1.5rem;
+    }
+    &--invalid {
+        border-color: $out-of-stock;
+    }
+  }
+
+  &__description {
+    font-family: "Titillium Web Regular";
+    height: 2rem;
+    border: 1px solid $cloud;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 1.5rem;
+    margin-top: 0;
+    &::placeholder {
+      color: black;
+    }
+    height: 6rem;
+
+    &--invalid {
+        border-color: $out-of-stock;
+    }
+  }
+
+  &__status {
+      text-align: left;
+      margin: 0 0 1rem 1.5rem;
+  }
+
+  &__select {
+    //   width: 100%;
+      margin: 0 1.5rem 0 1.5rem;
+      
+    // font-family: "Titillium Web Regular";
+    // height: 2rem;
+    // border: 1px solid $cloud;
+    // border-radius: 1rem;
+    // padding: 1rem;
+    // margin: 1rem 1.5rem;
+    // margin-top: 0;
+    // &::placeholder {
+    //   color: black;
+    // }
+    &--invalid {
+        border-color: $out-of-stock;
+    }
+
+    @include mQ($breakpoint-tablet) {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    background-color: $background-light;
+    padding: 1rem 1.5rem;
+    height: 10vh;
+
+    @include mQ($breakpoint-tablet) {
+      justify-content: flex-end;
+    }
+
+    &--cancel {
+      font-family: "Titillium Web Semi Bold";
+      color: $slate;
+      background-color: white;
+      border: 1px solid $cloud;
+      border-radius: 1.75rem;
+      width: 47%;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include mQ($breakpoint-tablet) {
+        width: 75px;
+        margin-right: 1rem;
+      }
+    }
+
+    &--save {
+      font-family: "Titillium Web Semi Bold";
+      color: white;
+      background-color: $instock-indigo;
+      border: 1px solid $cloud;
+      border-radius: 1.75rem;
+      width: 47%;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include mQ($breakpoint-tablet) {
+        width: 75px;
+      }
+    }
+  }
+}
