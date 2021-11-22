@@ -3,18 +3,18 @@
 @use "../../styles/partials/variables" as *;
 
 .add-inventory {
-  margin: 0 1.5rem;
+  margin: -4rem 1.5rem 1rem;
   background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 2px;
 
   @include mQ($breakpoint-tablet) {
-    margin: 0 2rem;
+    margin: -5rem 2rem 10rem;
     max-width: 63.75rem;
   }
 
   @include mQ($breakpoint-desktop) {
-    margin: 0 auto;
+    margin: -5rem auto 10rem;
   }
 
   &__header {
@@ -53,7 +53,7 @@
     @include mQ($breakpoint-tablet) {
       width: 50%;
       margin: 1.5rem 0;
-      padding: 1rem 2rem;
+      padding: 0.25rem 2rem;
       border-top: none;
 
       &:last-of-type {
@@ -113,14 +113,14 @@
     font-size: 0.813rem;
     line-height: 1.25rem;
     resize: none;
-    height: 120px;
+    height: 7.5rem;
     padding-top: 0.5rem;
     margin-bottom: 1rem;
 
     @include mQ($breakpoint-tablet) {
-      height: 120px;
       font-size: 0.875rem;
       line-height: 1.375rem;
+      height: 7.5rem;
     }
     &--invalid {
       border-color: $out-of-stock;
@@ -185,6 +185,7 @@
 
     @include mQ($breakpoint-tablet) {
       justify-content: flex-end;
+      height: 70px;
     }
   }
 
@@ -192,7 +193,7 @@
     width: 50%;
     font-size: 0.813rem;
     line-height: 1.25rem;
-    height: 36px;
+    height: 2.25rem;
     background-color: $white;
     border-radius: 20px;
     color: $slate;
@@ -201,7 +202,7 @@
     margin-right: 0.5rem;
 
     @include mQ($breakpoint-tablet) {
-      height: 38px;
+      height: 2.375rem;
       width: auto;
     }
 
@@ -215,7 +216,7 @@
     width: 50%;
     font-size: 0.813rem;
     line-height: 1.25rem;
-    height: 36px;
+    height: 2.25rem;
     background-color: $instock-indigo;
     border-radius: 20px;
     border: none;
@@ -224,7 +225,7 @@
     margin-left: 0.5rem;
 
     @include mQ($breakpoint-tablet) {
-      height: 38px;
+      height: 2.375rem;
       width: auto;
     }
 
