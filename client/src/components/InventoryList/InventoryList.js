@@ -3,6 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 
 export default function InventoryList({ inventory }) {
+  console.log(inventory);
   return (
     <section className="inventory-list">
       <article className="inventory-list__head">
@@ -76,9 +77,9 @@ export default function InventoryList({ inventory }) {
         </div>
       </article>
       <article>
-        {inventory.map((item) => (
+        {inventory.length !== 0 ? inventory.map((item) => (
           <ItemCard key={item.id} item={item} />
-        ))}
+        )) : <p> Loading </p>}
       </article>
     </section>
   );
