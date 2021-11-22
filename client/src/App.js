@@ -1,7 +1,7 @@
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
-import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails"
+import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import Inventory from "./pages/Inventory/Inventory";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
@@ -22,9 +22,16 @@ function App() {
           />
           <Route exact path="/warehouses" component={Warehouses} />
           <Route
-            exact path="/"
+            exact
+            path="/"
             render={(props) => {
-              return <Warehouses {...props} />;
+              return <WarehouseDetails {...props} />;
+            }}
+          />
+          <Route
+            path="/inventories"
+            render={(props) => {
+              return <Inventory {...props} />;
             }}
           />
           <Route
@@ -36,7 +43,7 @@ function App() {
           <Route
             path="/warehouses/:id"
             render={(props) => {
-              return <WarehouseDetails {...props} />
+              return <WarehouseDetails {...props} />;
             }}
           />
           <Route path="/inventories" component={Inventory} />

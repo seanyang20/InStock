@@ -4,7 +4,7 @@ import InventoryList from "../../components/InventoryList/InventoryList";
 
 const inventory_API_URL = "http://localhost:8080/inventories";
 
-export default function Inventory() {
+export default function Inventory(props) {
   const [inventoryList, setInventoryList] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function Inventory() {
 
   return (
     <>
-      <InventoryList inventory={inventoryList} />
+      <InventoryList inventory={inventoryList} browseProps={props} />
     </>
   );
 }
