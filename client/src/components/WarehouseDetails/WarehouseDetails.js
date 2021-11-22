@@ -1,27 +1,22 @@
 import "./WarehouseDetails.scss";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
-import backIcon from "../../assets/Icons/arrow_back-24px.svg";
-import editIcon from "../../assets/Icons/edit-24px.svg";
+import backIcon from "../../assets/icons/arrow_back-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
 import ItemCard from "../ItemCard/ItemCard";
+const apiUrl = "http://localhost:8080";
 
-const warehouse_API_URL = "http://localhost:8080";
-
-export default function WarehouseDetails() {
-  let location = useLocation();
-  let path = location.pathname;
-
+export default function WarehouseDetails(props) {
   const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState(null);
 
   useEffect(() => {
     // axios call to get warehouse details of selected warehouse
-    axios.get(`${warehouse_API_URL}${path}`).then((res) => {
+    axios.get(`${apiUrl}/warehouses/${props.match.params.id}`).then((res) => {
       setWarehouse(res.data);
     });
     // axios call to get the inventory list of selected warehouse
-    axios.get(`${warehouse_API_URL}${path}/inventories`).then((res) => {
+    axios.get(`${apiUrl}/inventories`).then((res) => {
       setInventory(res.data);
     });
   }, []);

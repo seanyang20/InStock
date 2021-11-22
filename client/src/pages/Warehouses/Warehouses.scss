@@ -1,0 +1,110 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouses {
+  width: 100vw;
+  background-color: $background-light;
+  padding-bottom: 6rem;
+
+  @include tablet {
+    padding-bottom: 10rem;
+  }
+
+  @include desktop {
+    padding-bottom: 14rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    margin: 0rem 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+    @include tablet {
+      margin: 0rem 2rem;
+    }
+
+    @include desktop {
+      margin: 0rem 8.125rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-actions {
+      display: flex;
+      flex-direction: column;
+
+      @include tablet {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__title {
+    align-self: flex-start;
+    font-family: "Titillium Web Semi Bold";
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    margin: 1.5rem;
+    margin-top: 2rem;
+
+    @include tablet {
+      margin: 2rem;
+    }
+  }
+
+  &__search {
+    font-family: "Titillium Web Regular";
+    font-size: 0.8125rem;
+    height: 2rem;
+    border: 1px solid $cloud;
+    border-radius: 1.25rem;
+    padding: 1rem;
+    background: url("../../assets/icons/search-24px.svg") 95% no-repeat;
+    margin: 0rem 1.5rem;
+    margin-bottom: 1rem;
+
+    @include tablet {
+      margin: 2rem 1rem;
+    }
+  }
+
+  &__button {
+    font-family: "Titillium Web Semi Bold";
+    font-size: 0.8125rem;
+    color: white;
+    background-color: $instock-indigo;
+    border: none;
+    height: 2rem;
+    border-radius: 1.25rem;
+    margin: 0rem 1.5rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-dark;
+      transition: 1s;
+    }
+
+    @include tablet {
+      width: 150px;
+      margin: 2rem;
+      margin-left: 0rem;
+    }
+  }
+}
