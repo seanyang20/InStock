@@ -12,16 +12,18 @@ export default function InventoryList({ inventory, browseProps }) {
       <article className="inventory-list__head">
         <h1 className="inventory-list__head--title">Inventory</h1>
         <div className="inventory-list__form-cont">
-          <form className="inventory-list__form">
+          <div className="inventory-list__form">
             <input
-              name="search"
               placeholder="Search..."
               className="inventory-list__form--input"
             />
-          </form>
-          <button className="inventory-list__form--button" onClick={handleAdd}>
-            Add New Item
-          </button>
+            <button
+              className="inventory-list__form--button"
+              onClick={handleAdd}
+            >
+              Add New Item
+            </button>
+          </div>
         </div>
       </article>
       <article className="inventory-list__headers">

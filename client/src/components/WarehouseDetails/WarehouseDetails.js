@@ -2,8 +2,8 @@ import "./WarehouseDetails.scss";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import backIcon from "../../assets/Icons/arrow_back-24px.svg";
-import editIcon from "../../assets/Icons/edit-24px.svg";
+import backIcon from "../../assets/icons/arrow_back-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
 import ItemCard from "../ItemCard/ItemCard";
 
 const warehouse_API_URL = "http://localhost:8080";

@@ -1,7 +1,7 @@
 import "./AddWarehouse.scss";
 import axios from "axios";
-import arrow from "../../assets/Icons/arrow_back-24px.svg";
-import error from "../../assets/Icons/error-24px.svg";
+import arrow from "../../assets/icons/arrow_back-24px.svg";
+import error from "../../assets/icons/error-24px.svg";
 import { useState } from "react";
 const apiUrl = "http://localhost:8080";
 

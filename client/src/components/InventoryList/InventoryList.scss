@@ -13,7 +13,7 @@
   &__head {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
+    margin-top: 2rem;
 
     &--title {
       font-size: 1.75rem;
@@ -37,10 +37,18 @@
 
     &--input {
       width: 100%;
-      margin: 1rem;
-      height: 2.25rem;
+      font-size: 0.8125rem;
+      height: 2rem;
       border: 1px solid $cloud;
       border-radius: 1.25rem;
+      padding: 1rem;
+      background: url("../../assets/icons/search-24px.svg") 95% no-repeat;
+      margin: 0rem 1.5rem;
+      margin-bottom: 1rem;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        margin: 2rem 1rem;
+      }
     }
 
     &--button {
@@ -59,28 +67,44 @@
   &__headers {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     background: rgba(247, 248, 249, 0.7);
+    visibility: hidden;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      visibility: visible;
+      margin-top: 1rem;
+    }
 
     &--left {
-      width: 30%;
+      width: 33%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      margin-left: 1rem;
+
+      @media screen and (min-width: $breakpoint-desktop) {
+        margin-left: 1.5rem;
+      }
     }
 
     &--right {
-      width: 30%;
+      width: 38%;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
 
     &--actions {
-      width: 30%;
+      width: 10%;
       justify-content: flex-end;
+      margin-right: 1rem;
+
+      @media screen and (min-width: $breakpoint-desktop) {
+        margin-right: 0;
+      }
     }
 
     &--txt {
@@ -88,7 +112,7 @@
       line-height: 1.125rem;
       color: $slate;
       height: 1.125rem;
-      margin: 0.25rem 0;
+      margin: 0.5rem;
       text-align: start;
     }
   }

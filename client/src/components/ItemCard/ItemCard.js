@@ -1,4 +1,5 @@
 import "./ItemCard.scss";
+import chevron from "../../assets/icons/chevron_right-24px.svg";
 
 export default function ItemCard({ item }) {
   // conditional className based on status
@@ -13,13 +14,16 @@ export default function ItemCard({ item }) {
 
   const handleDelete = () => {};
 
+  const handleItemSelect = () => {};
+
   return (
     <article className="item-card">
       <section className="item-card__left">
         <div className="item-card__section">
           <h6 className="item-card__subhead">INVENTORY ITEM</h6>
-          <p className="item-card__value--item">
-            {item.itemName} <span className="item-card__value--icon" />
+          <p className="item-card__value--item" onClick={handleItemSelect}>
+            {item.itemName}
+            <img className="item-card__value--icon" src={chevron} />
           </p>
         </div>
         <div className="item-card__section">
