@@ -11,7 +11,6 @@
   @include mQ($breakpoint-tablet) {
     margin: -5rem 2rem 0;
     max-width: 63.75rem;
-    height: 37.875rem;
   }
 
   @include mQ($breakpoint-desktop) {
