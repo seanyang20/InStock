@@ -5,6 +5,7 @@ import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import Inventory from "./pages/Inventory/Inventory";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route
             path="/warehouses/:id"
             render={(props) => {
-              return <Warehouses {...props} />;
+              return <WarehouseDetails {...props} />;
             }}
           />
           <Route

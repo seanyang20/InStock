@@ -55,4 +55,41 @@
       font-size: 0.8125rem;
     }
   }
+
+  &__headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background: rgba(247, 248, 249, 0.7);
+
+    &--left {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &--right {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    &--actions {
+      width: 30%;
+      justify-content: flex-end;
+    }
+
+    &--txt {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+      color: $slate;
+      height: 1.125rem;
+      margin: 0.25rem 0;
+      text-align: start;
+    }
+  }
 }

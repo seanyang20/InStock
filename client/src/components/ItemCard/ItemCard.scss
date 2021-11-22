@@ -4,14 +4,77 @@
 
 .item-card {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   border-top: 1px solid $cloud;
 
   @media screen and (min-width: $breakpoint-tablet) {
-    flex-direction: row;
-    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 1.5rem;
+    padding-bottom: 0;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 30%;
+      padding: 0;
+      margin: 1.5rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    padding-left: 7vw;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 40%;
+      padding: 0;
+      margin: 1.5rem;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+
+  &__section {
+    width: fit-content;
+    text-align: start;
+    font-size: 0.75rem;
+    color: $slate;
+  }
+
+  &__chg-cont {
+    display: flex;
     justify-content: space-between;
+    margin: 1.5rem;
+    width: 100%;
+    margin-top: 0.75rem;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: fit-content;
+      align-items: center;
+      margin: 2rem;
+    }
+  }
+
+  &__delete-cont {
+    &--icon {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__subhead {
@@ -33,6 +96,7 @@
     font-weight: 400;
     color: $instock-black;
     text-align: left;
+    margin-bottom: 0.25rem;
 
     &--item {
       font-size: 0.8125rem;
@@ -40,6 +104,7 @@
       font-weight: 600;
       color: $instock-indigo;
       text-align: left;
+      margin-bottom: 0.25rem;
     }
 
     // conditional status styling
@@ -69,84 +134,32 @@
     }
   }
 
-  // Containers
+  &__delete {
+    width: 1.25rem;
+    height: 1.5rem;
+    background-image: url("../../assets/Icons/delete_outline-24px.svg");
+    background-position: center;
+    background-size: cover;
 
-  &__info-section {
-    display: flex;
-    justify-content: space-around;
+    &:hover {
+      cursor: pointer;
+    }
 
     @media screen and (min-width: $breakpoint-tablet) {
-      flex-direction: row;
-      margin: 0;
-    }
-
-    &--left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-right: 1.5rem;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        flex-direction: row;
-        margin: 0;
-      }
-    }
-
-    &--right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-right: 2.5rem;
-
-      @media screen and (min-width: $breakpoint-tablet) {
-        flex-direction: row;
-        margin: 0;
-      }
+      margin: 0.5rem;
+      margin-left: 0rem;
     }
   }
 
-  &__title-cont {
-    margin: 0.5rem 0;
-    @media screen and (min-width: $breakpoint-tablet) {
-    }
-  }
+  &__edit {
+    width: 1.25rem;
+    height: 1.5rem;
+    background-image: url("../../assets/Icons/edit-24px.svg");
+    background-position: center;
+    background-size: cover;
 
-  &__cat-cont {
-    margin: 0.5rem 0;
-    @media screen and (min-width: $breakpoint-tablet) {
-    }
-  }
-
-  &__qty-cont {
-    margin: 0.5rem 0;
-    @media screen and (min-width: $breakpoint-tablet) {
-    }
-  }
-
-  &__stat-cont {
-    margin: 0.5rem 0;
-    @media screen and (min-width: $breakpoint-tablet) {
-    }
-  }
-
-  &__loc-cont {
-    margin: 0.5rem 0;
-    @media screen and (min-width: $breakpoint-tablet) {
-    }
-  }
-
-  &__chg-cont {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-    @media screen and (min-width: $breakpoint-tablet) {
-    }
-  }
-
-  &__delete-cont {
-    &--icon {
-      width: 100%;
-      height: 100%;
+    &:hover {
+      cursor: pointer;
     }
   }
 }

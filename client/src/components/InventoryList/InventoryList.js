@@ -24,6 +24,20 @@ export default function InventoryList({ inventory, browseProps }) {
           </button>
         </div>
       </article>
+      <article className="inventory-list__headers">
+        <div className="inventory-list__headers--left">
+          <p className="inventory-list__headers--txt">INVENTORY ITEM</p>
+          <p className="inventory-list__headers--txt">CATEGORY</p>
+        </div>
+        <div className="inventory-list__headers--right">
+          <p className="inventory-list__headers--txt">STATUS</p>
+          <p className="inventory-list__headers--txt">QUANTITY</p>
+          <p className="inventory-list__headers--txt">WAREHOUSE</p>
+        </div>
+        <div className="inventory-list__headers--actions">
+          <p className="inventory-list__headers--txt">ACTIONS</p>
+        </div>
+      </article>
       <article>
         {inventory.map((item) => (
           <ItemCard key={item.id} item={item} />
