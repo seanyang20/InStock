@@ -24,7 +24,7 @@ function App() {
             }}
           />
           <Route
-            path="/inventories/details"
+            path="/inventories/:id"
             render={(props) => {
               return <ItemDetails {...props} />;
             }}
