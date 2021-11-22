@@ -27,7 +27,6 @@ export default function AddInventory(props) {
     axios
       .get(`${apiUrl}/warehouses`)
       .then((res) => {
-        console.log(res.data);
         setAllWarehouseData(res.data);
         let warehouseArr = res.data.map((warehouse) => {
           const container = {};
@@ -44,12 +43,10 @@ export default function AddInventory(props) {
 
   const handleRadioTrue = () => {
     setInStock(true);
-    console.log(inStock);
   };
 
   const handleRadioFalse = () => {
     setInStock(false);
-    console.log(inStock);
   };
 
   const categoryOptions = [
@@ -62,12 +59,10 @@ export default function AddInventory(props) {
 
   const handleWarehouseChange = (selectedWarehouse) => {
     setSelectedWarehouse(selectedWarehouse);
-    console.log(selectedWarehouse);
   };
 
   const handleCategoryChange = (selectedCategory) => {
     setSelectedCategory(selectedCategory);
-    console.log(selectedCategory);
   };
 
   const handleClick = (event) => {
@@ -104,14 +99,12 @@ export default function AddInventory(props) {
       !statusIsValid ||
       !quantityIsValid
     ) {
-      console.log(validation);
       return;
     }
 
     const findWarehouse = allWarehouseData.find((warehouse) => {
       return warehouse.name === selectedWarehouse.value;
     });
-    console.log(findWarehouse);
 
     const newInventory = {
       warehouseID: findWarehouse.id,
@@ -122,7 +115,7 @@ export default function AddInventory(props) {
       status: status,
       quantity: updatedQuantity,
     };
-    console.log(newInventory);
+
     axios
       .post(
         `${apiUrl}/warehouses/${findWarehouse.id}/inventories`,
