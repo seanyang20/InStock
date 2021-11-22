@@ -153,10 +153,27 @@
       font-size: 1rem;
       margin: 0.25rem 1.5rem;
     }
+    &--invalid {
+        border-color: $out-of-stock;
+    }
   }
 
   &__description {
+    font-family: "Titillium Web Regular";
+    height: 2rem;
+    border: 1px solid $cloud;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 1.5rem;
+    margin-top: 0;
+    &::placeholder {
+      color: black;
+    }
     height: 6rem;
+
+    &--invalid {
+        border-color: $out-of-stock;
+    }
   }
 
   &__status {

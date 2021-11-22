@@ -82,7 +82,8 @@ export default function EditInventory(props) {
         const itemNameIsValid = updatedInventory.itemName.length > 0;
         const descriptionIsValid = updatedInventory.description.length > 0;
         const categoryIsValid = updatedInventory.category.length > 0;
-        const statusIsValid = status.length > 0;
+        const statusIsValid = updatedInventory.status.length > 0;
+        // const quantityIsValid = updatedInventory.quantity.length > 0;
         // console.log(warehouseNameIsValid);
 
         setValidation({
@@ -91,6 +92,7 @@ export default function EditInventory(props) {
             description: descriptionIsValid,
             category: categoryIsValid,
             status: statusIsValid,
+            // quantity: quantityIsValid,
           });
 
           if (
@@ -99,6 +101,7 @@ export default function EditInventory(props) {
             !descriptionIsValid ||
             !categoryIsValid ||
             !statusIsValid 
+            // !quantityIsValid
           ) {
             alert("Please fill in the empty fields");
             return;
@@ -138,13 +141,17 @@ export default function EditInventory(props) {
             <div className='editInventory__details'>
                 <h2 className='editInventory__details-title'>Item Details</h2>
                 <p className='editInventory__input-title'>Item Name</p>
-                <input name='itemName' className='editInventory__input' d/>
+                <input name='itemName' className={`editInventory__input ${
+                !validation.itemName && "editInventory__input--invalid"
+              }`} />
                 <p className='editInventory__input-title'>Description</p>
-                <input name='description' className='editInventory__input editInventory__description'  />
+                <input name='description' className={`editInventory__description ${
+                !validation.description && "editInventory__description--invalid"
+              }`}  />
                 <p className='editInventory__input-title'>Category</p>
                 {/* <input name='warehouseCountry' className='editInventory__input' /> */}
-                <select  name="category" className='editInventory__input' defaultValue="Electronics" >
-                    <option value="electronics">Electronics</option>
+                <select  name="category" id="category" className='editInventory__input' >
+                    <option value="electronics" selected>Electronics</option>
                     <option value="gear">Gear</option>
                     <option value="apparel">Apparel</option>
                     <option value="accessories">Accessories</option>
@@ -155,15 +162,15 @@ export default function EditInventory(props) {
                 <h2 className='editInventory__details-title'>Item Availability</h2>
                 <p className='editInventory__input-title'>Status</p>
                 <div name='status' className='editInventory__status' >
-                  <input type="radio" id="inStock" name="fav_language" value="In stock" onClick={handleRadioTrue}/>
+                  <input type="radio" id="inStock" name="fav_language" value="In stock" onClick={handleRadioTrue} checked/>
                   <label htmlFor="inStock">In stock</label>
                   <input type="radio" id="outOfStock" name="fav_language" value="Out of stock" onClick={handleRadioFalse}/>
                   <label htmlFor="outOfStock">Out of stock</label>
                 </div>
                 <p className='editInventory__input-title'>Warehouse</p>
                 {/* <input name='contactPosition' className='editInventory__input' /> */}
-                <select name='warehouseName' className='editInventory__input' defaultValue='Manhattan'>
-                    <option value="Manhattan">Manhattan</option>
+                <select name='warehouseName' id='warehouseName' className='editInventory__input' >
+                    <option value="Manhattan" selected>Manhattan</option>
                     <option value="King West">King West</option>
                     <option value="Granville">Granville</option>
                     <option value="San Fran">San Fran</option>
