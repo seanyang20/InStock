@@ -1,12 +1,7 @@
-import "./ItemCard.scss";
-import editIcon from "../../assets/Icons/edit-24px.svg";
-import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
-// import itemIcon from "../../assets/Icons/chevron_right-24px.svg";
-import { Link } from "react-router-dom";
+import "./WarehouseItemCard.scss";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 
-
-export default function ItemCard({ item }) {
+export default function WarehouseItemCard({ item }) {
   // conditional className based on status
   let statusClass = "item-card__value";
   if (item.status === "In Stock") {
@@ -46,18 +41,6 @@ export default function ItemCard({ item }) {
         <div className="item-card__section">
           <h6 className="item-card__subhead">QTY</h6>
           <p className="item-card__value">{item.quantity}</p>
-        </div>
-        <div className="item-card__edit-cont">
-        <Link to={`/inventories/edit/${item.id}`}>
-          <img
-            className="item-card__edit-cont--icon"
-            src={editIcon}
-            alt="edit icon"
-          />
-        </Link>
-        <div className="item-card__section">
-          <h6 className="item-card__subhead">WAREHOUSE</h6>
-          <p className="item-card__value">{item.warehouseName}</p>
         </div>
       </section>
       <section className="item-card__chg-cont">
