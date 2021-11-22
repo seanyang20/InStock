@@ -11,12 +11,11 @@
   @include mQ($breakpoint-tablet) {
     margin: -5rem 2rem 0;
     max-width: 63.75rem;
-    height: 44rem;
+    height: 37.875rem;
   }
 
   @include mQ($breakpoint-desktop) {
-    margin: 0 auto;
-    height: 37.875rem;
+    margin: -5rem auto 0;
   }
 
   &__header {
@@ -55,7 +54,7 @@
     @include mQ($breakpoint-tablet) {
       width: 50%;
       margin: 1.5rem 0;
-      padding: 1rem 2rem;
+      padding: 0.25rem 2rem;
       border-top: none;
 
       &:last-of-type {
@@ -122,6 +121,7 @@
     @include mQ($breakpoint-tablet) {
       font-size: 0.875rem;
       line-height: 1.375rem;
+      height: 7.5rem;
     }
     &--invalid {
       border-color: $out-of-stock;
