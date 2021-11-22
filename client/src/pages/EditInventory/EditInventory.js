@@ -8,6 +8,8 @@ const apiUrl = 'http://localhost:8080'
 // const inventory_API_URL = "http://localhost:8080/inventories";
 
 export default function EditInventory(props) {
+    const [warehouses, setWarehouses] = useState([]);
+    const [allWarehouseData, setAllWarehouseData] = useState([]);
     const [inventory, setInventory] = useState();
     const [inStock, setInStock] = useState(false);
     // const [selectOptions, setSelectOptions] = useState([]);
@@ -26,6 +28,23 @@ export default function EditInventory(props) {
         axios.get(`${apiUrl}/inventories/${props.match.params.id}`)
         .then((response) => {
             setInventory(response.data)
+
+            axios
+            .get(`${apiUrl}/warehouses`)
+            .then((res) => {
+                setAllWarehouseData(res.data);
+                let warehouseArr = res.data.map((warehouse) => {
+                    const container = {};
+                    container.value = warehouse.name;
+                    container.label = warehouse.name;
+                    console.log(container);
+                    return container;
+                });
+                    setWarehouses(warehouseArr);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
         })
         .catch((err) => {
             console.log(err)
@@ -50,15 +69,15 @@ export default function EditInventory(props) {
         { value: "health", label: "Health" },
       ];
 
-      const warehouseOptions = [
-        { value: "Manhattan", label: "Manhattan" },
-        { value: "King West", label: "King West" },
-        { value: "Granville", label: "Granville" },
-        { value: "San Fran", label: "San Fran" },
-        { value: "Santa Monica", label: "Santa Monica" },
-        { value: "Seattle", label: "Seattle" },
-        { value: "Montreal", label: "Montreal" },
-      ];
+    //   const warehouseOptions = [
+    //     { value: "Manhattan", label: "Manhattan" },
+    //     { value: "King West", label: "King West" },
+    //     { value: "Granville", label: "Granville" },
+    //     { value: "San Fran", label: "San Fran" },
+    //     { value: "Santa Monica", label: "Santa Monica" },
+    //     { value: "Seattle", label: "Seattle" },
+    //     { value: "Montreal", label: "Montreal" },
+    //   ];
 
     const handleWarehouseChange = (selectedWarehouse) => {
         setSelectedWarehouse(selectedWarehouse);
@@ -204,7 +223,7 @@ export default function EditInventory(props) {
                 {/* <input name='contactPosition' className='editInventory__input' /> */}
                 <Select
                     className="editInventory__select"
-                    options={warehouseOptions}
+                    options={warehouses}
                     placeholder="Please select"
                     name="warehouseName"
                     onChange={handleWarehouseChange}
