@@ -3,21 +3,32 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import arrow from "../../assets/Icons/arrow_back-24px.svg";
 import Select from "react-select";
+import error from "../../assets/Icons/error-24px.svg";
 
 const apiUrl = "http://localhost:8080";
 
 export default function AddInventory() {
   const [warehouses, setWarehouses] = useState([]);
   const [allWarehouseData, setAllWarehouseData] = useState([]);
-  const [inStock, setInStock] = useState(false);
+  const [inStock, setInStock] = useState(true);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [validation, setValidation] = useState({
+    warehouseID: true,
+    warehouseName: true,
+    itemName: true,
+    description: true,
+    category: true,
+    status: true,
+    quantity: true,
+  });
 
   useEffect(() => {
     axios
       .get(`${apiUrl}/warehouses`)
       .then((res) => {
         console.log(res.data);
+        setAllWarehouseData(res.data);
         let warehouseArr = res.data.map((warehouse) => {
           const container = {};
           container.value = warehouse.name;
@@ -25,7 +36,6 @@ export default function AddInventory() {
           return container;
         });
         setWarehouses(warehouseArr);
-        setAllWarehouseData(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -65,12 +75,43 @@ export default function AddInventory() {
     const { itemName, itemDescription, quantity } = event.target;
     const status = inStock ? "In Stock" : "Out of Stock";
     const updatedQuantity = inStock ? quantity.value : 0;
-    // const warehouseID = allWarehouseData.find(({warehouse}) => {
-    // warehouse.name === selectedWarehouse.value;
-    // }
+    console.log(allWarehouseData);
+
+    const itemNameIsValid = itemName.value.length > 0;
+    const itemDescriptionIsValid = itemDescription.value.length > 0;
+    const quantityIsValid = updatedQuantity.length > 0;
+    const warehouseIsValid = !!selectedWarehouse;
+    const categoryIsValid = !!selectedCategory;
+    const statusIsValid = status.length > 0;
+
+    setValidation({
+      warehouseName: warehouseIsValid,
+      itemName: itemNameIsValid,
+      description: itemDescriptionIsValid,
+      category: categoryIsValid,
+      status: statusIsValid,
+      quantity: quantityIsValid,
+    });
+
+    if (
+      !warehouseIsValid ||
+      !itemNameIsValid ||
+      !itemDescriptionIsValid ||
+      !categoryIsValid ||
+      !statusIsValid ||
+      !quantityIsValid
+    ) {
+      console.log(validation);
+      return;
+    }
+
+    const findWarehouse = allWarehouseData.find((warehouse) => {
+      return warehouse.name === selectedWarehouse.value;
+    });
+    console.log(findWarehouse);
 
     const newInventory = {
-      warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
+      warehouseID: findWarehouse.id,
       warehouseName: selectedWarehouse.value,
       itemName: itemName.value,
       description: itemDescription.value,
@@ -97,6 +138,16 @@ export default function AddInventory() {
             placeholder="Item Name"
             name="itemName"
           ></input>
+          {!validation.itemName && (
+            <div className="add-inventory__input-error">
+              <img
+                src={error}
+                alt="error icon"
+                className="add-inventory__input-error-icon"
+              />
+              <span>This field is required</span>
+            </div>
+          )}
           <label className="add-inventory__label">Description</label>
           <textarea
             type="text"
@@ -104,6 +155,16 @@ export default function AddInventory() {
             placeholder="Please enter a brief item description..."
             name="itemDescription"
           ></textarea>
+          {!validation.description && (
+            <div className="add-inventory__input-error">
+              <img
+                src={error}
+                alt="error icon"
+                className="add-inventory__input-error-icon"
+              />
+              <span>This field is required</span>
+            </div>
+          )}
           <label className="add-inventory__label">Category</label>
           <Select
             className="add-inventory__select"
@@ -112,6 +173,16 @@ export default function AddInventory() {
             name="category"
             onChange={handleCategoryChange}
           />
+          {!validation.category && (
+            <div className="add-inventory__input-error">
+              <img
+                src={error}
+                alt="error icon"
+                className="add-inventory__input-error-icon"
+              />
+              <span>This field is required</span>
+            </div>
+          )}
         </section>
         <section className="add-inventory__form-section">
           <h2 className="add-inventory__subtitle">Item Availability</h2>
@@ -123,6 +194,7 @@ export default function AddInventory() {
                 type="radio"
                 className="add-inventory__radio"
                 onClick={handleRadioTrue}
+                defaultChecked="checked"
               ></input>
               <label className="add-inventory__radio-label">In stock</label>
             </div>
@@ -152,6 +224,16 @@ export default function AddInventory() {
             placeholder="0"
             name="quantity"
           ></input>
+          {!validation.quantity && inStock && (
+            <div className="add-inventory__input-error">
+              <img
+                src={error}
+                alt="error icon"
+                className="add-inventory__input-error-icon"
+              />
+              <span>This field is required</span>
+            </div>
+          )}
           <label className="add-inventory__label">Warehouse</label>
           <Select
             className="add-inventory__select"
@@ -160,6 +242,16 @@ export default function AddInventory() {
             name="warehouse"
             onChange={handleWarehouseChange}
           />
+          {!validation.quantity && (
+            <div className="add-inventory__input-error">
+              <img
+                src={error}
+                alt="error icon"
+                className="add-inventory__input-error-icon"
+              />
+              <span>This field is required</span>
+            </div>
+          )}
         </section>
         <section className="add-inventory__buttons">
           <button className="add-inventory__cancel">Cancel</button>
