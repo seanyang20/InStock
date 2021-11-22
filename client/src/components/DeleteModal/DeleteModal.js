@@ -26,9 +26,13 @@ export default function Modal({ handleClose, show, warehouse, handleDelete }) {
           </button>
         </header>
         <div className="modal-main">
-          <h1 className="modal-main__header">{`Delete ${warehouse.name} warehouse?`}</h1>
+          <h1 className="modal-main__header">{`Delete ${
+            warehouse && warehouse.name
+          } warehouse?`}</h1>
           <p className="modal-main__text">
-            {`Please confirm that you'd like to delete the ${warehouse.name} from the list
+            {`Please confirm that you'd like to delete the ${
+              warehouse && warehouse.name
+            } from the list
             of warehouses. You won't be able to undo this action.`}
           </p>
         </div>
