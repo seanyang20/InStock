@@ -14,8 +14,6 @@ export default function ItemCard({ item }) {
     statusClass = "item-card__value item-card__value--outstock";
   }
 
-  const handleEdit = () => {};
-
   const handleDelete = () => {};
 
   const handleItemSelect = () => {};
@@ -46,15 +44,6 @@ export default function ItemCard({ item }) {
           <h6 className="item-card__subhead">QTY</h6>
           <p className="item-card__value">{item.quantity}</p>
         </div>
-        <div className="item-card__edit-cont">
-          <Link to={`/inventories/edit/${item.id}`}>
-            <img
-              className="item-card__edit-cont--icon"
-              src={editIcon}
-              alt="edit icon"
-            />
-          </Link>
-        </div>
         <div className="item-card__section">
           <h6 className="item-card__subhead">WAREHOUSE</h6>
           <p className="item-card__value">{item.warehouseName}</p>
@@ -62,7 +51,9 @@ export default function ItemCard({ item }) {
       </section>
       <section className="item-card__chg-cont">
         <div className="item-card__delete" onClick={handleDelete}></div>
-        <div className="item-card__edit" onClick={handleEdit}></div>
+        <Link to={`/inventories/edit/${item.id}`}>
+          <div className="item-card__edit"></div>
+        </Link>
       </section>
     </article>
   );
