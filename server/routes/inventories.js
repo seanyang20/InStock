@@ -184,5 +184,31 @@ router.post("/warehouses/:warehouseId/inventories", (req, res) => {
   res.json(newInventory);
 });
 
+// Delete specific inventory item
+router.delete("/inventories/:id", (req, res) => {
+  const inventoryItem = inventoryData.find((item) => {
+    return item.id === req.params.id;
+  });
+
+  console.log(inventoryItem);
+
+  if (inventoryItem) {
+    inventoryData.splice(inventoryData.indexOf(inventoryItem), 1);
+
+    fs.writeFile(
+      "./data/inventories.json",
+      JSON.stringify(inventoryData),
+      (err) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+        res.status(200).json(inventoryData);
+      }
+    );
+  } else {
+    res.status(404).send("Item not found.");
+  }
+});
+
 // module.exports = router;
 module.exports = router;
