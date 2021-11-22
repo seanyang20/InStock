@@ -5,7 +5,6 @@ import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import { Link } from "react-router-dom";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 
-
 export default function ItemCard({ item }) {
   // conditional className based on status
   let statusClass = "item-card__value";
@@ -48,16 +47,17 @@ export default function ItemCard({ item }) {
           <p className="item-card__value">{item.quantity}</p>
         </div>
         <div className="item-card__edit-cont">
-        <Link to={`/inventories/edit/${item.id}`}>
-          <img
-            className="item-card__edit-cont--icon"
-            src={editIcon}
-            alt="edit icon"
-          />
-        </Link>
-        <div className="item-card__section">
-          <h6 className="item-card__subhead">WAREHOUSE</h6>
-          <p className="item-card__value">{item.warehouseName}</p>
+          <Link to={`/inventories/edit/${item.id}`}>
+            <img
+              className="item-card__edit-cont--icon"
+              src={editIcon}
+              alt="edit icon"
+            />
+          </Link>
+          <div className="item-card__section">
+            <h6 className="item-card__subhead">WAREHOUSE</h6>
+            <p className="item-card__value">{item.warehouseName}</p>
+          </div>
         </div>
       </section>
       <section className="item-card__chg-cont">
