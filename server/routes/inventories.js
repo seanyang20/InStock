@@ -126,17 +126,6 @@ router.get("/warehouses/:warehouseId/inventories", (req, res) => {
       // console.log(inventory, "TESTING")
       inventory.warehouseID === warehouseId
   );
-<<<<<<< HEAD
-  console.log(warehouseInv);
-  // res.json(inventoriesData);
-
-  if (warehouseInv) {
-    res.json(warehouseInv);
-} else {
-    res.status(404).send("We can't find that warehouse.");
-}
-  
-=======
   // console.log(warehouseInv);
   res.json(warehouseInv);
 });
@@ -219,7 +208,6 @@ router.delete("/inventories/:id", (req, res) => {
   } else {
     res.status(404).send("Item not found.");
   }
->>>>>>> develop
 });
 
 // module.exports = router;
