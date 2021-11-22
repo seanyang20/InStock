@@ -18,7 +18,7 @@ const getInventoryData = () => {
 // Return data from JSON
 getInventoryData();
 
-router.get("/", (_req, res) => {
+router.get("/inventories", (_req, res) => {
   console.log("Inside Router /Get for all inventory");
   res.json(inventoryData);
 });
