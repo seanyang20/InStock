@@ -1,5 +1,6 @@
 import "./WarehouseDetails.scss";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import backIcon from "../../assets/icons/arrow_back-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -29,7 +30,9 @@ export default function WarehouseDetails(props) {
     <section className="warehouse-details">
       <article className="head">
         <div className="head__back">
-          <img className="head__back--icon" src={backIcon} alt="back icon" />
+          <Link to="/warehouses">
+            <img className="head__back--icon" src={backIcon} alt="back icon" />
+          </Link>
         </div>
         <h1 className="head__title">{warehouse.name}</h1>
         <div className="head__edit">
