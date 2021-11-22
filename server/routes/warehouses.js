@@ -8,7 +8,7 @@ const uuid = require("uuid");
 let warehousesData = [];
 
 const getWarehouseData = () => {
-  fs.readFile('./data/warehouses.json', (err, data) => {
+  fs.readFile("./data/warehouses.json", (err, data) => {
     if (err) {
       console.log(err);
       return;
@@ -28,40 +28,64 @@ router.get("/", (_req, res) => {
 // Retrive data for one warehouse
 router.get("/:id", (req, res) => {
   let warehouse = warehousesData.find((warehouse) => {
-    return warehouse.id === req.params.id
-  })
+    return warehouse.id === req.params.id;
+  });
 
-  if(warehouse)
-    res.json(warehouse);
-  else
-    res.status(404).send('Warehouse with that ID was not found')
+  if (warehouse) res.json(warehouse);
+  else res.status(404).send("Warehouse with that ID was not found");
 });
 
 // Edit a specific warehouse's details
 router.put("/:id", (req, res) => {
   let warehouse = warehousesData.find((warehouse) => {
-    return warehouse.id === req.params.id
-  })
+    return warehouse.id === req.params.id;
+  });
 
-  if(warehouse) {
-    const { name, address, city, country, contact } = req.body
-    warehouse.name = name
-    warehouse.address = address
-    warehouse.city = city
-    warehouse.country = country
-    warehouse.contact = contact
+  if (warehouse) {
+    const { name, address, city, country, contact } = req.body;
+    warehouse.name = name;
+    warehouse.address = address;
+    warehouse.city = city;
+    warehouse.country = country;
+    warehouse.contact = contact;
 
-    fs.writeFile('./data/warehouses.json', JSON.stringify(warehousesData), (err) => {
-      if(err)
-        res.status(500).send(err)
-      
-        console.log('Warehouse updated successfully')
-        res.status(201).send(warehouse)
-    })
+    fs.writeFile(
+      "./data/warehouses.json",
+      JSON.stringify(warehousesData),
+      (err) => {
+        if (err) res.status(500).send(err);
+
+        console.log("Warehouse updated successfully");
+        res.status(201).send(warehouse);
+      }
+    );
+  } else res.status(404).send("Warehouse with that ID was not found");
+});
+
+router.delete("/", (req, res) => {
+  const warehouse = warehousesData.find((item) => {
+    return item.id === req.body.id;
+  });
+
+  console.log(req);
+
+  if (warehouse) {
+    warehousesData.splice(warehousesData.indexOf(warehouse), 1);
+
+    fs.writeFile(
+      "./data/warehouses.json",
+      JSON.stringify(warehousesData),
+      (err) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+        res.status(200).json(warehousesData);
+      }
+    );
+  } else {
+    res.status(404).send("Warehouse not found.");
   }
-  else
-    res.status(404).send('Warehouse with that ID was not found')
-})
+});
 
 //write data to json
 const writeWareHouseData = (data) => {
