@@ -75,7 +75,6 @@ export default function AddInventory() {
     const { itemName, itemDescription, quantity } = event.target;
     const status = inStock ? "In Stock" : "Out of Stock";
     const updatedQuantity = inStock ? quantity.value : 0;
-    console.log(allWarehouseData);
 
     const itemNameIsValid = itemName.value.length > 0;
     const itemDescriptionIsValid = itemDescription.value.length > 0;
@@ -129,130 +128,138 @@ export default function AddInventory() {
         <h1 className="add-inventory__title">Add New Inventory Item</h1>
       </section>
       <form onSubmit={handleSubmit} className="add-inventory__form">
-        <section className="add-inventory__form-section">
-          <h2 className="add-inventory__subtitle">Item details</h2>
-          <label className="add-inventory__label">Item Name</label>
-          <input
-            type="text"
-            className="add-inventory__details-name"
-            placeholder="Item Name"
-            name="itemName"
-          ></input>
-          {!validation.itemName && (
-            <div className="add-inventory__input-error">
-              <img
-                src={error}
-                alt="error icon"
-                className="add-inventory__input-error-icon"
-              />
-              <span>This field is required</span>
+        <div className="add-inventory__flex-container">
+          <section className="add-inventory__form-section">
+            <h2 className="add-inventory__subtitle">Item details</h2>
+            <label className="add-inventory__label">Item Name</label>
+            <input
+              type="text"
+              className={`add-inventory__details-name ${
+                !validation.itemName && "add-inventory__details-name--invalid"
+              }`}
+              placeholder="Item Name"
+              name="itemName"
+            ></input>
+            {!validation.itemName && (
+              <div className="add-inventory__input-error">
+                <img
+                  src={error}
+                  alt="error icon"
+                  className="add-inventory__input-error-icon"
+                />
+                <span>This field is required</span>
+              </div>
+            )}
+            <label className="add-inventory__label">Description</label>
+            <textarea
+              type="text"
+              className={`add-inventory__details-description ${
+                !validation.itemName &&
+                "add-inventory__details-description--invalid"
+              }`}
+              placeholder="Please enter a brief item description..."
+              name="itemDescription"
+            ></textarea>
+            {!validation.description && (
+              <div className="add-inventory__input-error">
+                <img
+                  src={error}
+                  alt="error icon"
+                  className="add-inventory__input-error-icon"
+                />
+                <span>This field is required</span>
+              </div>
+            )}
+            <label className="add-inventory__label">Category</label>
+            <Select
+              className="add-inventory__select"
+              options={categoryOptions}
+              placeholder="Please select"
+              name="category"
+              onChange={handleCategoryChange}
+            />
+            {!validation.category && (
+              <div className="add-inventory__input-error">
+                <img
+                  src={error}
+                  alt="error icon"
+                  className="add-inventory__input-error-icon"
+                />
+                <span>This field is required</span>
+              </div>
+            )}
+          </section>
+          <section className="add-inventory__form-section">
+            <h2 className="add-inventory__subtitle">Item Availability</h2>
+            <h4 className="add-inventory__label">Status</h4>
+            <div className="add-inventory__radio-buttons">
+              <div className="add-inventory__radio-button-container">
+                <input
+                  name="status"
+                  type="radio"
+                  className="add-inventory__radio"
+                  onClick={handleRadioTrue}
+                  defaultChecked="checked"
+                ></input>
+                <label className="add-inventory__radio-label">In stock</label>
+              </div>
+              <div className="add-inventory__radio-button-container">
+                <input
+                  name="status"
+                  type="radio"
+                  className="add-inventory__radio"
+                  onClick={handleRadioFalse}
+                ></input>
+                <label className="add-inventory__radio-label">
+                  Out of stock
+                </label>
+              </div>
             </div>
-          )}
-          <label className="add-inventory__label">Description</label>
-          <textarea
-            type="text"
-            className="add-inventory__details-description"
-            placeholder="Please enter a brief item description..."
-            name="itemDescription"
-          ></textarea>
-          {!validation.description && (
-            <div className="add-inventory__input-error">
-              <img
-                src={error}
-                alt="error icon"
-                className="add-inventory__input-error-icon"
-              />
-              <span>This field is required</span>
-            </div>
-          )}
-          <label className="add-inventory__label">Category</label>
-          <Select
-            className="add-inventory__select"
-            options={categoryOptions}
-            placeholder="Please select"
-            name="category"
-            onChange={handleCategoryChange}
-          />
-          {!validation.category && (
-            <div className="add-inventory__input-error">
-              <img
-                src={error}
-                alt="error icon"
-                className="add-inventory__input-error-icon"
-              />
-              <span>This field is required</span>
-            </div>
-          )}
-        </section>
-        <section className="add-inventory__form-section">
-          <h2 className="add-inventory__subtitle">Item Availability</h2>
-          <h4 className="add-inventory__label">Status</h4>
-          <div className="add-inventory__radio-buttons">
-            <div className="add-inventory__radio-button-container">
-              <input
-                name="status"
-                type="radio"
-                className="add-inventory__radio"
-                onClick={handleRadioTrue}
-                defaultChecked="checked"
-              ></input>
-              <label className="add-inventory__radio-label">In stock</label>
-            </div>
-            <div className="add-inventory__radio-button-container">
-              <input
-                name="status"
-                type="radio"
-                className="add-inventory__radio"
-                onClick={handleRadioFalse}
-              ></input>
-              <label className="add-inventory__radio-label">Out of stock</label>
-            </div>
-          </div>
-          <label
-            className={`add-inventory__label ${
-              !inStock && "add-inventory__label--hidden"
-            }`}
-          >
-            Quantity
-          </label>
-
-          <input
-            type="number"
-            className={`add-inventory__quantity ${
-              !inStock && "add-inventory__quantity--hidden"
-            }`}
-            placeholder="0"
-            name="quantity"
-          ></input>
-          {!validation.quantity && inStock && (
-            <div className="add-inventory__input-error">
-              <img
-                src={error}
-                alt="error icon"
-                className="add-inventory__input-error-icon"
-              />
-              <span>This field is required</span>
-            </div>
-          )}
-          <label className="add-inventory__label">Warehouse</label>
-          <Select
-            className="add-inventory__select"
-            options={warehouses}
-            placeholder="Please select"
-            name="warehouse"
-            onChange={handleWarehouseChange}
-          />
-          {!validation.quantity && (
-            <div className="add-inventory__input-error">
-              <img
-                src={error}
-                alt="error icon"
-                className="add-inventory__input-error-icon"
-              />
-              <span>This field is required</span>
-            </div>
-          )}
-        </section>
+            <label
+              className={`add-inventory__label ${
+                !inStock && "add-inventory__label--hidden"
+              }`}
+            >
+              Quantity
+            </label>
+            <input
+              type="number"
+              className={`add-inventory__quantity ${
+                !inStock && "add-inventory__quantity--hidden"
+              } ${!validation.quantity && "add-inventory__quantity--invalid"}`}
+              placeholder="0"
+              name="quantity"
+            ></input>
+            {!validation.quantity && inStock && (
+              <div className="add-inventory__input-error">
+                <img
+                  src={error}
+                  alt="error icon"
+                  className="add-inventory__input-error-icon"
+                />
+                <span>This field is required</span>
+              </div>
+            )}
+            <label className="add-inventory__label">Warehouse</label>
+            <Select
+              className="add-inventory__select"
+              options={warehouses}
+              placeholder="Please select"
+              name="warehouse"
+              onChange={handleWarehouseChange}
+            />
+            {!validation.warehouseName && (
+              <div className="add-inventory__input-error">
+                <img
+                  src={error}
+                  alt="error icon"
+                  className="add-inventory__input-error-icon"
+                />
+                <span>This field is required</span>
+              </div>
+            )}
+          </section>
+        </div>
         <section className="add-inventory__buttons">
           <button className="add-inventory__cancel">Cancel</button>
           <button type="submit" className="add-inventory__add-button">
