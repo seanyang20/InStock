@@ -7,6 +7,7 @@ import Inventory from "./pages/Inventory/Inventory";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import AddInventory from "./pages/AddInventory/AddInventory";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
+          <Route exact path="/inventories/add" component={AddInventory} />
           <Route
             path="/warehouses/add"
             render={(props) => {
