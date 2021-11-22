@@ -8,6 +8,7 @@ import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import AddInventory from "./pages/AddInventory/AddInventory";
+import ItemDetails from "./pages/ItemDetails/ItemDetails";
 
 function App() {
   return (
@@ -20,6 +21,12 @@ function App() {
             path="/warehouses/add"
             render={(props) => {
               return <AddWarehouse {...props} />;
+            }}
+          />
+          <Route
+            path="/inventories/:id"
+            render={(props) => {
+              return <ItemDetails {...props} />;
             }}
           />
           <Route exact path="/warehouses" component={Warehouses} />

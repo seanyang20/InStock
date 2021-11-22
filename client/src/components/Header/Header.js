@@ -1,5 +1,5 @@
 import "./Header.scss";
-import logo from "../../assets/logo/InStock-Logo_2x.png";
+import logo from "../../assets/Logo/InStock-Logo_2x.png";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {

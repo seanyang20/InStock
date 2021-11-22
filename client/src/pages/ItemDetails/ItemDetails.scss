@@ -1,0 +1,179 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+
+.item-details {
+  margin: -4rem 1.5rem 0;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 2px;
+  @include mQ($breakpoint-tablet) {
+    margin: -5rem 2rem 0;
+    max-width: 1020px;
+  }
+
+  @include mQ($breakpoint-desktop) {
+    margin: -5rem auto 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid $cloud;
+    position: relative;
+  }
+
+  &__title-container {
+    display: flex;
+  }
+
+  &__edit {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+    background-color: $instock-indigo;
+    place-items: center center;
+    position: absolute;
+    right: 1rem;
+
+    @include mQ($breakpoint-tablet) {
+      margin-right: 2.25rem;
+      display: flex;
+      align-items: center;
+      width: 5.0625rem;
+      height: 2.375rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__edit-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    filter: brightness(0) invert(1);
+    margin-top: 0.55rem;
+
+    @include mQ($breakpoint-tablet) {
+      height: 1.25rem;
+      width: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__edit-text {
+    visibility: hidden;
+
+    @include mQ($breakpoint-tablet) {
+      visibility: visible;
+      color: white;
+      font-size: 0.875rem;
+      line-height: 22px;
+      font-weight: 600;
+      margin-left: 0.25rem;
+    }
+  }
+
+  &__info-container {
+    padding: 1rem;
+    @include mQ($breakpoint-tablet) {
+      display: flex;
+      padding: 1.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    line-height: 2.25rem;
+    padding-left: 0.25rem;
+
+    @include mQ($breakpoint-tablet) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  &__top-section {
+    text-align: left;
+
+    @include mQ($breakpoint-tablet) {
+      width: 50%;
+      padding-right: 3rem;
+    }
+  }
+
+  &__status {
+    text-align: left;
+  }
+
+  &__quantity {
+    text-align: left;
+    padding-right: 5rem;
+  }
+
+  &__label {
+    font-size: 0.688rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-family: $font-semi;
+    color: $slate;
+  }
+
+  &__text {
+    font-size: 0.813rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.25rem;
+    @include mQ($breakpoint-tablet) {
+      margin-bottom: 0.625rem;
+    }
+  }
+
+  &__flex-right {
+    @include mQ($breakpoint-tablet) {
+      width: 50%;
+      border-left: 1px solid $cloud;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &__middle-section {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__bottom-section {
+    text-align: left;
+  }
+
+  &__value {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 0.25rem;
+    justify-content: center;
+
+    &--instock {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      line-height: 1rem;
+      text-transform: uppercase;
+      color: $in-stock;
+      background: rgba(21, 132, 99, 0.07);
+      border-radius: 1.25rem;
+      width: 3.5rem;
+      text-align: center;
+    }
+
+    &--outstock {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      line-height: 1rem;
+      text-transform: uppercase;
+      color: $out-of-stock;
+      background: rgba(201, 69, 21, 0.07);
+      border-radius: 1.25rem;
+      width: 4.5rem;
+      text-align: center;
+    }
+  }
+}
