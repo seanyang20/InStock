@@ -14,22 +14,26 @@
     flex-direction: column;
     justify-content: center;
     background-color: white;
-    margin: 0rem 1rem;
+    margin: -1rem 1rem;
     border-radius: 0.25rem;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    
 
     @include mQ($breakpoint-tablet) {
       margin: 0rem 2rem;
     }
 
     @include mQ($breakpoint-desktop){
-      margin: 0rem 8.125rem;
+      margin: 0rem 10.5rem;
     }
   }
 
   &__header {
     display: flex;
     justify-content: flex-start;
+    margin-top: -6rem;
+    z-index: 1;
+    background-color: $white;
 
     @include mQ($breakpoint-tablet){
       align-items: center;
@@ -179,6 +183,30 @@
   &__status {
       text-align: left;
       margin: 0 0 1rem 1.5rem;
+  }
+
+  &__select {
+    //   width: 100%;
+      margin: 0 1.5rem 0 1.5rem;
+      
+    // font-family: "Titillium Web Regular";
+    // height: 2rem;
+    // border: 1px solid $cloud;
+    // border-radius: 1rem;
+    // padding: 1rem;
+    // margin: 1rem 1.5rem;
+    // margin-top: 0;
+    // &::placeholder {
+    //   color: black;
+    // }
+    &--invalid {
+        border-color: $out-of-stock;
+    }
+
+    @include mQ($breakpoint-tablet) {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
   }
 
   &__actions {

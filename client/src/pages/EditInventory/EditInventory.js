@@ -1,6 +1,7 @@
 import './EditInventory.scss';
 import { useEffect, useState } from "react";
 import { useHistory } from 'react-router'
+import Select from "react-select";
 import axios from 'axios'
 const apiUrl = 'http://localhost:8080'
 
@@ -10,6 +11,8 @@ export default function EditInventory(props) {
     const [inventory, setInventory] = useState();
     const [inStock, setInStock] = useState(false);
     // const [selectOptions, setSelectOptions] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
     const [validation, setValidation] = useState({
         warehouseName: true,
         itemName: true,
@@ -38,6 +41,33 @@ export default function EditInventory(props) {
         setInStock(false);
         console.log(inStock);
       };
+
+      const categoryOptions = [
+        { value: "accessories", label: "Accessories" },
+        { value: "apparel", label: "Apparel" },
+        { value: "electronics", label: "Electronics" },
+        { value: "gear", label: "Gear" },
+        { value: "health", label: "Health" },
+      ];
+
+      const warehouseOptions = [
+        { value: "Manhattan", label: "Manhattan" },
+        { value: "King West", label: "King West" },
+        { value: "Granville", label: "Granville" },
+        { value: "San Fran", label: "San Fran" },
+        { value: "Santa Monica", label: "Santa Monica" },
+        { value: "Seattle", label: "Seattle" },
+        { value: "Montreal", label: "Montreal" },
+      ];
+
+    const handleWarehouseChange = (selectedWarehouse) => {
+        setSelectedWarehouse(selectedWarehouse);
+    };
+    
+
+    const handleCategoryChange = (selectedCategory) => {
+        setSelectedCategory(selectedCategory);
+      };
     // const getOptions = () => {
     //     console.log("Inside getOptions");
 
@@ -57,6 +87,10 @@ export default function EditInventory(props) {
     // console.log(invItems);
     // let uniqueInvItems = [...new Set(invItems)];
     // console.log(uniqueInvItems);
+    const handleClick = (event) => {
+        event.preventDefault();
+        props.history.push("/inventories");
+      };
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -103,21 +137,10 @@ export default function EditInventory(props) {
             !statusIsValid 
             // !quantityIsValid
           ) {
-            alert("Please fill in the empty fields");
+            alert("Fields cannot be empty");
             return;
           }
-      
-        //   const newWarehouse = {
-        //     name: warehouseName.value,
-        //     address: streetAddress.value,
-        //     city: city.value,
-        //     country: country.value,
-        //     contactName: contactName.value,
-        //     position: position.value,
-        //     phone: phoneNumber.value,
-        //     email: email.value,
-        //   };
-    
+   
 
         axios.put(`${apiUrl}/inventories/${inventory.id}`, updatedInventory)
         .then((response) => {
@@ -130,6 +153,8 @@ export default function EditInventory(props) {
     }
     console.log(validation);
 
+ 
+    // console.log(inventory.category);
   return (
     <div className='editInventory'>
     <form onSubmit={handleSubmit} className='editInventory__container'>
@@ -150,38 +175,54 @@ export default function EditInventory(props) {
               }`}  />
                 <p className='editInventory__input-title'>Category</p>
                 {/* <input name='warehouseCountry' className='editInventory__input' /> */}
-                <select  name="category" id="category" className='editInventory__input' >
-                    <option value="electronics" selected>Electronics</option>
+                <Select
+                    id="category"
+                    className="editInventory__select"
+                    options={categoryOptions}
+                    placeholder="Please select"
+                    name="category"
+                    onChange={handleCategoryChange}
+                />
+                {/* <select  name="category" id="category" className='editInventory__input'  >
+                    <option value="electronics">Electronics</option>
                     <option value="gear">Gear</option>
                     <option value="apparel">Apparel</option>
                     <option value="accessories">Accessories</option>
-                </select>
+                </select> */}
             </div>
             <div className='editInventory__sections-divider' ></div>
             <div className='editInventory__availability'>
                 <h2 className='editInventory__details-title'>Item Availability</h2>
                 <p className='editInventory__input-title'>Status</p>
                 <div name='status' className='editInventory__status' >
-                  <input type="radio" id="inStock" name="fav_language" value="In stock" onClick={handleRadioTrue} checked/>
+                  <input type="radio" id="inStock" name="fav_language" value="In stock" onClick={handleRadioTrue} defaultChecked="checked"/>
                   <label htmlFor="inStock">In stock</label>
                   <input type="radio" id="outOfStock" name="fav_language" value="Out of stock" onClick={handleRadioFalse}/>
                   <label htmlFor="outOfStock">Out of stock</label>
                 </div>
                 <p className='editInventory__input-title'>Warehouse</p>
                 {/* <input name='contactPosition' className='editInventory__input' /> */}
-                <select name='warehouseName' id='warehouseName' className='editInventory__input' >
-                    <option value="Manhattan" selected>Manhattan</option>
+                <Select
+                    className="editInventory__select"
+                    options={warehouseOptions}
+                    placeholder="Please select"
+                    name="warehouseName"
+                    onChange={handleWarehouseChange}
+                    id="warehouseName"
+                />
+                {/* <select name='warehouseName' id='warehouseName' className='editInventory__input'>
+                    <option value="Manhattan">Manhattan</option>
                     <option value="King West">King West</option>
                     <option value="Granville">Granville</option>
                     <option value="San Fran">San Fran</option>
                     <option value="Santa Monica">Santa Monica</option>
                     <option value="Seattle">Seattle</option>
                     <option value="Montreal">Montreal</option>
-                </select>
+                </select> */}
             </div>
         </div>
         <div className='editInventory__actions'>
-            <button className='editInventory__actions--cancel'>Cancel</button>
+            <button onClick={handleClick} className='editInventory__actions--cancel'>Cancel</button>
             <button type='submit' className='editInventory__actions--save'>Save</button>
         </div>
     </form>
