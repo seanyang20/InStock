@@ -21,10 +21,12 @@ export default function ItemCard({ item }) {
       <section className="item-card__left">
         <div className="item-card__section">
           <h6 className="item-card__subhead">INVENTORY ITEM</h6>
-          <p className="item-card__value--item" onClick={handleItemSelect}>
-            {item.itemName}
-            <img className="item-card__value--icon" src={chevron} />
-          </p>
+          <div className="item-card__subsec">
+            <p className="item-card__value--item" onClick={handleItemSelect}>
+              {item.itemName}
+            </p>
+            <img className="item-card__value--icon" src={chevron} alt="" />
+          </div>
         </div>
         <div className="item-card__section">
           <h6 className="item-card__subhead">CATEGORY</h6>

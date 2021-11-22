@@ -1,17 +1,36 @@
-import { Component } from "react";
-import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+import './Warehouses.scss';
+import WarehouseListItem from '../../components/WarehouseListItem/WarehouseListItem';
+import { useState, useEffect } from 'react';
+import axios from 'axios'
+const apiUrl = 'http://localhost:8080'
 
-export default class Warehouses extends Component {
-  render() {
-    return (
-      <main>
-        <div className="warehouse__heading">
-          <figure className="warehouse__backarrow"></figure>
-          <div className="warehouse__title"></div>
-          <button className="warehouse__edit-button"></button>
+export default function Warehouses(props) {
+    const [warehouses, setWarehouses] = useState([])
+
+    useEffect(() => {
+        axios.get(`${apiUrl}/warehouses`)
+        .then((response) => {
+            setWarehouses(response.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [])
+
+    return(
+        <div className='warehouses'>
+            <div className='warehouses__container'>
+                <div className='warehouses__header'>
+                    <h1 className='warehouses__title'>Warehouses</h1>
+                    <div className='warehouses__header-actions'>
+                        <input className='warehouses__search' placeholder='Search...'/>
+                        <button className='warehouses__button'>+ Add New Warehouse</button>
+                    </div>
+                </div>
+                {warehouses.map((warehouse, index) => (
+                    <WarehouseListItem key={index} warehouse={warehouse}/>
+                ))}
+            </div>
         </div>
-        <WarehouseDetails />
-      </main>
     );
-  }
 }

@@ -31,31 +31,55 @@ export default function InventoryList({ inventory, browseProps }) {
         <div className="inventory-list__headers--left">
           <p className="inventory-list__headers--txt">
             INVENTORY ITEM{" "}
-            <img className="inventory-list__headers--icon" src={sortIcon} />
+            <img
+              className="inventory-list__headers--icon"
+              src={sortIcon}
+              alt=""
+            />
           </p>
           <p className="inventory-list__headers--txt">
             CATEGORY{" "}
-            <img className="inventory-list__headers--icon" src={sortIcon} />
+            <img
+              className="inventory-list__headers--icon"
+              src={sortIcon}
+              alt=""
+            />
           </p>
         </div>
         <div className="inventory-list__headers--right">
           <p className="inventory-list__headers--txt">
             STATUS{" "}
-            <img className="inventory-list__headers--icon" src={sortIcon} />
+            <img
+              className="inventory-list__headers--icon"
+              src={sortIcon}
+              alt=""
+            />
           </p>
           <p className="inventory-list__headers--txt">
             QUANTITY{" "}
-            <img className="inventory-list__headers--icon" src={sortIcon} />
+            <img
+              className="inventory-list__headers--icon"
+              src={sortIcon}
+              alt=""
+            />
           </p>
           <p className="inventory-list__headers--txt">
             WAREHOUSE{" "}
-            <img className="inventory-list__headers--icon" src={sortIcon} />
+            <img
+              className="inventory-list__headers--icon"
+              src={sortIcon}
+              alt=""
+            />
           </p>
         </div>
         <div className="inventory-list__headers--actions">
           <p className="inventory-list__headers--txt">
             ACTIONS{" "}
-            <img className="inventory-list__headers--icon" src={sortIcon} />
+            <img
+              className="inventory-list__headers--icon"
+              src={sortIcon}
+              alt=""
+            />
           </p>
         </div>
       </article>
