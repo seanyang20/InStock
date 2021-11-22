@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "./DeleteModal.scss";
-import axios from "axios";
-const apiURL = "http://localhost:8080";
+// const apiURL = "http://localhost:8080";
 
 export default function Modal({ handleClose, show, warehouse, handleDelete }) {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
