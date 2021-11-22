@@ -36,8 +36,10 @@ export default function WarehouseDetails(props) {
         </div>
         <h1 className="head__title">{warehouse.name}</h1>
         <div className="head__edit">
-          <img className="head__edit--icon" src={editIcon} alt="edit icon" />
-          <p className="head__edit--txt">Edit</p>
+          <Link to={`warehouses/edit/${warehouse.id}`}>
+            <img className="head__edit--icon" src={editIcon} alt="edit icon" />
+            <p className="head__edit--txt">Edit</p>
+          </Link>
         </div>
       </article>
       <article className="details">
