@@ -15,7 +15,7 @@ export default function EditInventory(props) {
         itemName: true,
         description: true,
         category: true,
-        // status: true,
+        status: true,
       });
     const history = useHistory()
 
@@ -78,31 +78,31 @@ export default function EditInventory(props) {
         console.log(inventory);
         console.log(updatedInventory);
 
-        // const warehouseNameIsValid = updatedInventory.warehouseName.value.length > 0;
-        // const itemNameIsValid = updatedInventory.itemName.value.length > 0;
-        // const descriptionIsValid = updatedInventory.description.value.length > 0;
-        // const categoryIsValid = updatedInventory.category.value.length > 0;
-        // // const statusIsValid = status.value.length > 0;
- 
+        const warehouseNameIsValid = updatedInventory.warehouseName.length > 0;
+        const itemNameIsValid = updatedInventory.itemName.length > 0;
+        const descriptionIsValid = updatedInventory.description.length > 0;
+        const categoryIsValid = updatedInventory.category.length > 0;
+        const statusIsValid = status.length > 0;
+        // console.log(warehouseNameIsValid);
 
-        // setValidation({
-        //     warehouseName: warehouseNameIsValid,
-        //     itemName: itemNameIsValid,
-        //     description: descriptionIsValid,
-        //     category: categoryIsValid,
-        //     // status: statusIsValid,
-        //   });
+        setValidation({
+            warehouseName: warehouseNameIsValid,
+            itemName: itemNameIsValid,
+            description: descriptionIsValid,
+            category: categoryIsValid,
+            status: statusIsValid,
+          });
 
-        //   if (
-        //     !warehouseNameIsValid ||
-        //     !itemNameIsValid ||
-        //     !descriptionIsValid ||
-        //     !categoryIsValid 
-        //     // !statusIsValid 
-        //   ) {
-        //     alert("Please fill in the empty fields");
-        //     return;
-        //   }
+          if (
+            !warehouseNameIsValid ||
+            !itemNameIsValid ||
+            !descriptionIsValid ||
+            !categoryIsValid ||
+            !statusIsValid 
+          ) {
+            alert("Please fill in the empty fields");
+            return;
+          }
       
         //   const newWarehouse = {
         //     name: warehouseName.value,
