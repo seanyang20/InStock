@@ -13,6 +13,7 @@ export default function Inventory(props) {
     });
   }, []);
 
+  console.log(inventoryList);
   if (!inventoryList) return null;
 
   return (
