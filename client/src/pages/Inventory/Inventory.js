@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import InventoryList from "../../components/InventoryList/InventoryList";
 
-const inventory_API_URL = "http://localhost:8080/inventories/inventories";
+const inventory_API_URL = "http://localhost:8080/inventories";
 
 export default function Inventory(props) {
   const [inventoryList, setInventoryList] = useState([]);
