@@ -17,43 +17,50 @@ export default function ItemDetails(props) {
     });
   }, []);
 
-  // let statusClass = "item-details__value";
-  // if (item.status === "In Stock") {
-  //   statusClass = "item-details__value item-card__details--instock";
-  // } else {
-  //   statusClass = "item-details__value item-card__details--outstock";
-  // }
+  let statusClass = "item-details__value";
+  if (inventoryItem.status === "In Stock") {
+    statusClass = "item-details__value item-details__value--instock";
+  } else {
+    statusClass = "item-details__value item-details__value--outstock";
+  }
 
   return (
-    <section>
-      <header>
-        <img src={arrow} alt="arrow icon" />
-        <h1>{inventoryItem.itemName}</h1>
-        {/* info needs to load in from data, doing basic markup */}
+    <section className="item-details">
+      <header className="item-details__header">
+        <div className="item-details__title-container">
+          <img src={arrow} alt="arrow icon" />
+          <h1 className="item-details__title">{inventoryItem.itemName}</h1>
+        </div>
         <img src={edit} alt="pencil in a circle" />
       </header>
-      <section>
-        <label>ITEM DESCRIPTION:</label>
-        <p>{inventoryItem.description}</p>
-        <label>CATEGORY:</label>
-        <p>Electronics</p>
-      </section>
-      <section>
-        <div>
-          <label>STATUS:</label>
-          <p className="item-details__value">{inventoryItem.status}</p>
-        </div>
-        <div>
-          <label>QUANTITY:</label>
-          <p>{inventoryItem.quantity}</p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <label>WAREHOUSE:</label>
-          <p>{inventoryItem.warehouseName}</p>
-        </div>
-      </section>
+      <article className="item-details__info-container">
+        <section className="item-details__top-section">
+          <div>
+            <label className="item-details__label">ITEM DESCRIPTION:</label>
+            <p>{inventoryItem.description}</p>
+          </div>
+          <div>
+            <label className="item-details__label">CATEGORY:</label>
+            <p className="item-details__text">Electronics</p>
+          </div>
+        </section>
+        <section className="item-details__middle-section">
+          <div>
+            <label className="item-details__label">STATUS:</label>
+            <p className={statusClass}>{inventoryItem.status}</p>
+          </div>
+          <div>
+            <label className="item-details__label">QUANTITY:</label>
+            <p className="item-details__text">{inventoryItem.quantity}</p>
+          </div>
+        </section>
+        <section className="item-details__bottom-section">
+          <div>
+            <label className="item-details__label">WAREHOUSE:</label>
+            <p className="item-details__text">{inventoryItem.warehouseName}</p>
+          </div>
+        </section>
+      </article>
     </section>
   );
 }
