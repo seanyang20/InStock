@@ -1,5 +1,6 @@
 import "./InventoryList.scss";
 import ItemCard from "../ItemCard/ItemCard";
+import sortIcon from "../../assets/icons/sort-24px.svg";
 
 export default function InventoryList({ inventory, browseProps }) {
   const handleAdd = (event) => {
@@ -28,16 +29,34 @@ export default function InventoryList({ inventory, browseProps }) {
       </article>
       <article className="inventory-list__headers">
         <div className="inventory-list__headers--left">
-          <p className="inventory-list__headers--txt">INVENTORY ITEM</p>
-          <p className="inventory-list__headers--txt">CATEGORY</p>
+          <p className="inventory-list__headers--txt">
+            INVENTORY ITEM{" "}
+            <img className="inventory-list__headers--icon" src={sortIcon} />
+          </p>
+          <p className="inventory-list__headers--txt">
+            CATEGORY{" "}
+            <img className="inventory-list__headers--icon" src={sortIcon} />
+          </p>
         </div>
         <div className="inventory-list__headers--right">
-          <p className="inventory-list__headers--txt">STATUS</p>
-          <p className="inventory-list__headers--txt">QUANTITY</p>
-          <p className="inventory-list__headers--txt">WAREHOUSE</p>
+          <p className="inventory-list__headers--txt">
+            STATUS{" "}
+            <img className="inventory-list__headers--icon" src={sortIcon} />
+          </p>
+          <p className="inventory-list__headers--txt">
+            QUANTITY{" "}
+            <img className="inventory-list__headers--icon" src={sortIcon} />
+          </p>
+          <p className="inventory-list__headers--txt">
+            WAREHOUSE{" "}
+            <img className="inventory-list__headers--icon" src={sortIcon} />
+          </p>
         </div>
         <div className="inventory-list__headers--actions">
-          <p className="inventory-list__headers--txt">ACTIONS</p>
+          <p className="inventory-list__headers--txt">
+            ACTIONS{" "}
+            <img className="inventory-list__headers--icon" src={sortIcon} />
+          </p>
         </div>
       </article>
       <article>
