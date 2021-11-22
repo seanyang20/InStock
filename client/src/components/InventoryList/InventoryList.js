@@ -29,58 +29,58 @@ export default function InventoryList({ inventory, browseProps }) {
       </article>
       <article className="inventory-list__headers">
         <div className="inventory-list__headers--left">
-          <p className="inventory-list__headers--txt">
-            INVENTORY ITEM{" "}
+          <div className="inventory-list__headers--subsec">
+            <p className="inventory-list__headers--txt">INVENTORY ITEM</p>
             <img
               className="inventory-list__headers--icon"
               src={sortIcon}
               alt=""
             />
-          </p>
-          <p className="inventory-list__headers--txt">
-            CATEGORY{" "}
+          </div>
+          <div className="inventory-list__headers--subsec">
+            <p className="inventory-list__headers--txt">CATEGORY</p>
             <img
               className="inventory-list__headers--icon"
               src={sortIcon}
               alt=""
             />
-          </p>
+          </div>
         </div>
         <div className="inventory-list__headers--right">
-          <p className="inventory-list__headers--txt">
-            STATUS{" "}
+          <div className="inventory-list__headers--subsec">
+            <p className="inventory-list__headers--txt">STATUS</p>
             <img
               className="inventory-list__headers--icon"
               src={sortIcon}
               alt=""
             />
-          </p>
-          <p className="inventory-list__headers--txt">
-            QUANTITY{" "}
+          </div>
+          <div className="inventory-list__headers--subsec">
+            <p className="inventory-list__headers--txt">QUANTITY</p>
             <img
               className="inventory-list__headers--icon"
               src={sortIcon}
               alt=""
             />
-          </p>
-          <p className="inventory-list__headers--txt">
-            WAREHOUSE{" "}
+          </div>
+          <div className="inventory-list__headers--subsec">
+            <p className="inventory-list__headers--txt">WAREHOUSE</p>
             <img
               className="inventory-list__headers--icon"
               src={sortIcon}
               alt=""
             />
-          </p>
+          </div>
         </div>
         <div className="inventory-list__headers--actions">
-          <p className="inventory-list__headers--txt">
-            ACTIONS{" "}
+          <div className="inventory-list__headers--subsec">
+            <p className="inventory-list__headers--txt">ACTIONS</p>
             <img
               className="inventory-list__headers--icon"
               src={sortIcon}
               alt=""
             />
-          </p>
+          </div>
         </div>
       </article>
       <article>
