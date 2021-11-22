@@ -58,7 +58,7 @@ router.put("/inventories/:inventoryId", (req, res) => {
   //   "status": "In Stock"
   // }
 
-  const { itemName, warehouseName, description, category, status } = req.body;
+  const { itemName, warehouseName, description, category, status, quantity } = req.body;
 
   // to enable editing of these properties on the front-end
   const itemNameIsValid = itemName.length > 0;
@@ -66,7 +66,9 @@ router.put("/inventories/:inventoryId", (req, res) => {
   const descriptionIsValid = description.length > 0;
   const categoryIsValid = category.length > 0;
   const statusIsValid = status.length > 0;
+  // const quantityIsValid = quantity.length > 0;
 
+  // console.log(quantityIsValid, "Valid");
   // to enable editing of these properties on the front-end
   // selectedInventory.itemName = req.body.itemName;
   // selectedInventory.warehouseName = req.body.warehouseName;
@@ -78,7 +80,8 @@ router.put("/inventories/:inventoryId", (req, res) => {
     !warehouseNameIsValid ||
     !descriptionIsValid ||
     !categoryIsValid ||
-    !statusIsValid
+    !statusIsValid 
+    // !quantityIsValid
   ) {
     res
       .status(400)
@@ -91,6 +94,7 @@ router.put("/inventories/:inventoryId", (req, res) => {
   selectedInventory.description = description;
   selectedInventory.category = category;
   selectedInventory.status = status;
+  selectedInventory.quantity = quantity;
 
   // to replace the old inventory item with the edited version in the array
   inventoryData.map((invInArray) => {

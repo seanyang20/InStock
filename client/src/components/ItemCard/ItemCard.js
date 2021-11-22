@@ -1,5 +1,10 @@
 import "./ItemCard.scss";
+import editIcon from "../../assets/Icons/edit-24px.svg";
+import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
+// import itemIcon from "../../assets/Icons/chevron_right-24px.svg";
+import { Link } from "react-router-dom";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
+
 
 export default function ItemCard({ item }) {
   // conditional className based on status
@@ -42,6 +47,14 @@ export default function ItemCard({ item }) {
           <h6 className="item-card__subhead">QTY</h6>
           <p className="item-card__value">{item.quantity}</p>
         </div>
+        <div className="item-card__edit-cont">
+        <Link to={`/inventories/edit/${item.id}`}>
+          <img
+            className="item-card__edit-cont--icon"
+            src={editIcon}
+            alt="edit icon"
+          />
+        </Link>
         <div className="item-card__section">
           <h6 className="item-card__subhead">WAREHOUSE</h6>
           <p className="item-card__value">{item.warehouseName}</p>
