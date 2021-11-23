@@ -20,12 +20,14 @@ function App() {
         <Switch>
           <Route exact path="/inventories/add" component={AddInventory} />
           <Route
+            exact
             path="/warehouses/add"
             render={(props) => {
               return <AddWarehouse {...props} />;
             }}
           />
           <Route
+            exact
             path="/inventories/:id"
             render={(props) => {
               return <ItemDetails {...props} />;
@@ -40,6 +42,7 @@ function App() {
             }}
           />
           <Route
+            exact
             path="/inventories"
             render={(props) => {
               return <Inventory {...props} />;
