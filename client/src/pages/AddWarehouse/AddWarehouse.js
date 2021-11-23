@@ -85,7 +85,7 @@ export default function AddWarehouse(props) {
 
     console.log(newWarehouse);
     axios
-      .post(`${apiUrl}/warehouses/add`, newWarehouse)
+      .post(`${apiUrl}/warehouses/`, newWarehouse)
       .then(() => {
         props.history.push("/warehouses");
       })
