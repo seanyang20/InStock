@@ -3,17 +3,17 @@
 @use "../../styles/partials/global" as *;
 
 .item-details {
-  margin: -4rem 1.5rem 0;
+  margin: -4rem 1.5rem 4rem;
   background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 2px;
   @include mQ($breakpoint-tablet) {
-    margin: -5rem 2rem 0;
+    margin: -5rem 2rem 20rem;
     max-width: 1020px;
   }
 
   @include mQ($breakpoint-desktop) {
-    margin: -5rem auto 0;
+    margin: -5rem auto 20rem;
   }
 
   &__header {
