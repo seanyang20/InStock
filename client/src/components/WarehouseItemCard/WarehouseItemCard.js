@@ -11,12 +11,6 @@ export default function WarehouseItemCard({ item }) {
     statusClass = "item-card__value item-card__value--outstock";
   }
 
-  const handleEdit = () => {};
-
-  const handleDelete = () => {};
-
-  const handleItemSelect = () => {};
-
   return (
     <article className="item-card">
       <section className="item-card__left">
@@ -45,7 +39,9 @@ export default function WarehouseItemCard({ item }) {
         </div>
       </section>
       <section className="item-card__chg-cont">
-        <div className="item-card__delete"></div>
+        <Link to={`/inventories/delete/${item.id}`}>
+          <div className="item-card__delete"></div>
+        </Link>
         <Link to={`/inventories/edit/${item.id}`}>
           <div className="item-card__edit"></div>
         </Link>
