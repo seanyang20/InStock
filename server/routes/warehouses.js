@@ -62,9 +62,9 @@ router.put("/:id", (req, res) => {
   } else res.status(404).send("Warehouse with that ID was not found");
 });
 
-router.delete("/", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   const warehouse = warehousesData.find((item) => {
-    return item.id === req.body.id;
+    return item.id === req.params.id;
   });
 
   console.log(req);

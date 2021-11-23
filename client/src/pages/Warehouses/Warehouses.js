@@ -3,6 +3,7 @@ import WarehouseListItem from "../../components/WarehouseListItem/WarehouseListI
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "../../components/DeleteModal/DeleteModal";
+import { Link } from "react-router-dom";
 const apiUrl = "http://localhost:8080";
 
 export default function Warehouses(props) {
@@ -28,7 +29,7 @@ export default function Warehouses(props) {
   const handleDelete = () => {
     console.log(warehouse);
     axios
-      .delete(`${apiUrl}/warehouses`, warehouse)
+      .delete(`${apiUrl}/warehouses/delete/${warehouse.id}`)
       .then((response) => {
         console.log(response);
       })
@@ -46,7 +47,7 @@ export default function Warehouses(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [warehouses]);
 
   return (
     <div className="warehouses">
@@ -55,7 +56,9 @@ export default function Warehouses(props) {
           <h1 className="warehouses__title">Warehouses</h1>
           <div className="warehouses__header-actions">
             <input className="warehouses__search" placeholder="Search..." />
-            <button className="warehouses__button">+ Add New Warehouse</button>
+            <Link to={`/warehouses/add`} className="warehouses__button">
+              + Add New Warehouse
+            </Link>
           </div>
         </div>
         {warehouses.map((warehouse, index) => (

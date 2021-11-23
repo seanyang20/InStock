@@ -19,18 +19,15 @@ const getInventoryData = () => {
 getInventoryData();
 
 router.get("/inventories", (_req, res) => {
-  console.log("Inside Router /Get for all inventory");
   res.json(inventoryData);
 });
 
 router.get("/inventories/:inventoryId", (req, res) => {
-  console.log("Inside Router /Get for a single inventory item");
-
   console.log(req.params.inventoryId);
   const singleInventory = inventoryData.find((inventory) => {
     return inventory.id === req.params.inventoryId;
   });
-  // console.log(singleInventory);
+
   if (singleInventory) {
     res.json(singleInventory);
   } else {
@@ -38,27 +35,15 @@ router.get("/inventories/:inventoryId", (req, res) => {
   }
 });
 
-router.put("/inventories/:inventoryId", (req, res) => {
-  console.log("Inside ROUTER PUT to edit an inventory item");
+router.put("/inventories/edit/:inventoryId", (req, res) => {
   const inventoryId = req.params.inventoryId;
-  // console.log(inventoryId);           // requested inventory id
+
   const selectedInventory = inventoryData.find(
-    (inventory) =>
-      // console.log(video, "TESTING")
-      inventory.id === inventoryId
+    (inventory) => inventory.id === inventoryId
   );
-  // console.log(selectedInventory);      // returned selected inventory
 
-  // To test in Postman
-  // {
-  //   "itemName": "Television",
-  //   "warehouseName": "Manhattan",
-  //   "description": "This 50, 4K LED TV provides a crystal-clear picture and vivid colors.",
-  //   "category": "Electronics",
-  //   "status": "In Stock"
-  // }
-
-  const { itemName, warehouseName, description, category, status, quantity } = req.body;
+  const { itemName, warehouseName, description, category, status, quantity } =
+    req.body;
 
   // to enable editing of these properties on the front-end
   const itemNameIsValid = itemName.length > 0;
@@ -66,22 +51,13 @@ router.put("/inventories/:inventoryId", (req, res) => {
   const descriptionIsValid = description.length > 0;
   const categoryIsValid = category.length > 0;
   const statusIsValid = status.length > 0;
-  // const quantityIsValid = quantity.length > 0;
 
-  // console.log(quantityIsValid, "Valid");
-  // to enable editing of these properties on the front-end
-  // selectedInventory.itemName = req.body.itemName;
-  // selectedInventory.warehouseName = req.body.warehouseName;
-  // selectedInventory.description = req.body.description;
-  // selectedInventory.category = req.body.category;
-  // selectedInventory.status = req.body.status;
   if (
     !itemNameIsValid ||
     !warehouseNameIsValid ||
     !descriptionIsValid ||
     !categoryIsValid ||
-    !statusIsValid 
-    // !quantityIsValid
+    !statusIsValid
   ) {
     res
       .status(400)
@@ -102,10 +78,7 @@ router.put("/inventories/:inventoryId", (req, res) => {
       return (invInArray = selectedInventory);
     }
   });
-  // console.log(inventoryData);;
-  // to send edited data to endpoint
-  // res.json(inventoryData);
-  // to update the inventories.json file
+
   fs.writeFile(
     "./data/inventories.json",
     JSON.stringify(inventoryData),
@@ -126,11 +99,9 @@ router.get("/warehouses/:warehouseId/inventories", (req, res) => {
   console.log(warehouseId);
 
   const warehouseInv = inventoryData.filter(
-    (inventory) =>
-      // console.log(inventory, "TESTING")
-      inventory.warehouseID === warehouseId
+    (inventory) => inventory.warehouseID === warehouseId
   );
-  // console.log(warehouseInv);
+
   res.json(warehouseInv);
 });
 
@@ -189,7 +160,7 @@ router.post("/warehouses/:warehouseId/inventories", (req, res) => {
 });
 
 // Delete specific inventory item
-router.delete("/inventories/:id", (req, res) => {
+router.delete("/inventories/delete/:id", (req, res) => {
   const inventoryItem = inventoryData.find((item) => {
     return item.id === req.params.id;
   });
@@ -214,5 +185,4 @@ router.delete("/inventories/:id", (req, res) => {
   }
 });
 
-// module.exports = router;
 module.exports = router;

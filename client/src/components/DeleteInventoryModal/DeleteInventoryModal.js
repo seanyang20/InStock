@@ -1,25 +1,14 @@
 import React, { Component } from "react";
-import "./DeleteWarehouse.scss";
+import "./DeleteInventoryModal.scss";
+// const apiURL = "http://localhost:8080";
 
-// import Modal from "react-modal";
-
-// state = {
-//   warehouses: [],
-// };
-
-// componentDidMount() {
-//       axios
-//         .get("http://localhost:8080/warehouses")
-//         .then((res) => {
-//           const warehouses = res.data;
-//           console.log(warehouses);
-//           this.setState({ warehouses: warehouses });
-//         })
-//         .catch((err) => console.log(err));
-//     };
-
-const Modal = ({ handleClose, show, children }) => {
+export default function Modal({ handleClose, show, inventory, handleDelete }) {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
+
+  const handleClick = () => {
+    handleDelete();
+    handleClose();
+  };
 
   return (
     <div className={showHideClassName}>
@@ -37,10 +26,14 @@ const Modal = ({ handleClose, show, children }) => {
           </button>
         </header>
         <div className="modal-main">
-          <h1 className="modal-main__header">Delete King West warehouse?</h1>
+          <h1 className="modal-main__header">{`Delete ${
+            inventory && inventory.itemName
+          } warehouse?`}</h1>
           <p className="modal-main__text">
-            Please confirm that you'd like to delete the King West from the list
-            of warehouses. You won't be able to undo this action.
+            {`Please confirm that you'd like to delete the ${
+              inventory && inventory.itemName
+            } from the list
+            of warehouses. You won't be able to undo this action.`}
           </p>
         </div>
         <footer className="modal-footer">
@@ -51,13 +44,15 @@ const Modal = ({ handleClose, show, children }) => {
           >
             Cancel
           </button>
-          <button className="modal-button--delete" type="button">
+          <button
+            className="modal-button--delete"
+            type="button"
+            onClick={handleClick}
+          >
             Delete
           </button>
         </footer>
       </section>
     </div>
   );
-};
-
-export default Modal;
+}

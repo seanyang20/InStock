@@ -1,9 +1,52 @@
 import "./InventoryList.scss";
 import ItemCard from "../ItemCard/ItemCard";
 import sortIcon from "../../assets/icons/sort-24px.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Modal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
+const apiUrl = "http://localhost:8080";
 
-export default function InventoryList({ inventory }) {
-  console.log(inventory);
+export default function InventoryList() {
+  const [show, setShow] = useState(false);
+  const [inventory, setInventory] = useState({});
+  const [inventories, setInventories] = useState([]);
+
+  const showModal = (id) => {
+    const modalInventory = inventories.find((inventory) => {
+      return inventory.id === id;
+    });
+
+    setInventory(modalInventory);
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
+
+  const handleDelete = () => {
+    axios
+      .delete(`${apiUrl}/inventories/delete/${inventory.id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/inventories`)
+      .then((response) => {
+        setInventories(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [inventories]);
+
   return (
     <section className="inventory-list">
       <article className="inventory-list__head">
@@ -14,9 +57,12 @@ export default function InventoryList({ inventory }) {
               placeholder="Search..."
               className="inventory-list__form--input"
             />
-            <button className="inventory-list__form--button">
-              Add New Item
-            </button>
+            <Link
+              to="/inventories/add"
+              className="inventory-list__form--button"
+            >
+              + Add New Item
+            </Link>
           </div>
         </div>
       </article>
@@ -77,9 +123,25 @@ export default function InventoryList({ inventory }) {
         </div>
       </article>
       <article>
-        {inventory.length !== 0 ? inventory.map((item) => (
-          <ItemCard key={item.id} item={item} />
-        )) : <p> Loading </p>}
+        {inventories.length !== 0 ? (
+          inventories.map((inventory) => (
+            <ItemCard
+              key={inventory.id}
+              inventory={inventory}
+              showModal={showModal}
+            />
+          ))
+        ) : (
+          <p> Loading </p>
+        )}
+        <Modal
+          show={show}
+          handleClose={hideModal}
+          inventory={inventory}
+          handleDelete={handleDelete}
+        >
+          <p>Modal</p>
+        </Modal>
       </article>
     </section>
   );
