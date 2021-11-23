@@ -96,7 +96,7 @@ const writeWareHouseData = (data) => {
 };
 
 // Router.post
-router.post("/add", (req, res) => {
+router.post("/", (req, res) => {
   const { name, address, city, country, contactName, position, phone, email } =
     req.body;
 
@@ -140,8 +140,8 @@ router.post("/add", (req, res) => {
       email: email,
     },
   };
-  warehouseData.push(newWarehouse);
-  writeWareHouseData(warehouseData);
+  warehousesData.push(newWarehouse);
+  writeWareHouseData(warehousesData);
 
   res.json(newWarehouse);
 });
