@@ -3,14 +3,14 @@ import arrow from "../../assets/icons/arrow_back-24px.svg";
 import edit from "../../assets/icons/edit-24px.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const apiUrl = "http://localhost:8080";
 
 export default function ItemDetails(props) {
   const [inventoryItem, setInventoryItem] = useState([]);
   const warehouseID = props.match.params.id;
-
+  const history = useHistory();
   useEffect(() => {
     axios.get(`${apiUrl}/inventories/${warehouseID}`).then((res) => {
       setInventoryItem(res.data);
@@ -28,7 +28,13 @@ export default function ItemDetails(props) {
     <section className="item-details">
       <header className="item-details__header">
         <div className="item-details__title-container">
-          <img src={arrow} alt="arrow icon" />
+          <img
+            src={arrow}
+            alt="arrow icon"
+            onClick={() => {
+              history.push("/inventories");
+            }}
+          />
           <h1 className="item-details__title">{inventoryItem.itemName}</h1>
         </div>
         <Link to={`/inventories/edit/${inventoryItem.id}`}>

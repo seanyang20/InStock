@@ -1,5 +1,5 @@
 import React from "react";
-// import "./DeleteModal.scss";
+import "./DeleteModal.scss";
 // const apiURL = "http://localhost:8080";
 
 export default function Modal({ handleClose, show, warehouse, handleDelete }) {
@@ -7,6 +7,7 @@ export default function Modal({ handleClose, show, warehouse, handleDelete }) {
 
   const handleClick = () => {
     handleDelete();
+    handleClose();
   };
 
   return (

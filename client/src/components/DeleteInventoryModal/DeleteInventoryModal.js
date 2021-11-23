@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./DeleteInventoryModal.scss";
+import "./DeleteInventoryModal.scss";
 // const apiURL = "http://localhost:8080";
 
 export default function Modal({ handleClose, show, inventory, handleDelete }) {
@@ -7,6 +7,7 @@ export default function Modal({ handleClose, show, inventory, handleDelete }) {
 
   const handleClick = () => {
     handleDelete();
+    handleClose();
   };
 
   return (
@@ -27,11 +28,11 @@ export default function Modal({ handleClose, show, inventory, handleDelete }) {
         <div className="modal-main">
           <h1 className="modal-main__header">{`Delete ${
             inventory && inventory.itemName
-          } inventory item?`}</h1>
+          } warehouse?`}</h1>
           <p className="modal-main__text">
-            {`Please confirm that you'd like to delete ${
+            {`Please confirm that you'd like to delete the ${
               inventory && inventory.itemName
-            } from the inventory list
+            } from the list
             of warehouses. You won't be able to undo this action.`}
           </p>
         </div>

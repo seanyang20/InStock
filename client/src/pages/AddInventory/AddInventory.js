@@ -77,7 +77,7 @@ export default function AddInventory(props) {
     const updatedQuantity = inStock ? quantity.value : 0;
     const itemNameIsValid = itemName.value.length > 0;
     const itemDescriptionIsValid = itemDescription.value.length > 0;
-    const quantityIsValid = updatedQuantity.length > 0;
+    const quantityIsValid = updatedQuantity.length >= 0;
     const warehouseIsValid = !!selectedWarehouse;
     const categoryIsValid = !!selectedCategory;
     const statusIsValid = status.length > 0;
