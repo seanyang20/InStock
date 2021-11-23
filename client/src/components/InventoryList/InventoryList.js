@@ -1,9 +1,44 @@
 import "./InventoryList.scss";
 import ItemCard from "../ItemCard/ItemCard";
 import sortIcon from "../../assets/icons/sort-24px.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Modal from "../../components/DeleteInventoryModal/DeleteInventoryModal";
+const inventory_API_URL = "http://localhost:8080/inventories";
 
 export default function InventoryList({ inventory }) {
   console.log(inventory);
+
+  // inventory modal delete function
+  const [show, setShow] = useState(false);
+  // const [inventoryItem, setInventoryItem] = useState({});
+  const [item, setItem] = useState({});
+  const showModal = (id) => {
+    const modalInventory = inventory.find((inventoryItem) => {
+      return inventory.id === inventoryItem.id;
+    });
+    setItem(modalInventory);
+
+    console.log(item);
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
+
+  const handleDelete = () => {
+    console.log(inventory);
+    axios
+      .delete(`${inventory_API_URL}/:inventoryId`, inventory)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <section className="inventory-list">
       <article className="inventory-list__head">
@@ -77,9 +112,21 @@ export default function InventoryList({ inventory }) {
         </div>
       </article>
       <article>
-        {inventory.length !== 0 ? inventory.map((item) => (
-          <ItemCard key={item.id} item={item} />
-        )) : <p> Loading </p>}
+        {inventory.length !== 0 ? (
+          inventory.map((item) => (
+            <ItemCard key={item.id} item={item} showModal={showModal} />
+          ))
+        ) : (
+          <p> Loading </p>
+        )}
+        <Modal
+          show={show}
+          handleClose={hideModal}
+          item={item}
+          handleDelete={handleDelete}
+        >
+          <p>Modal</p>
+        </Modal>
       </article>
     </section>
   );
